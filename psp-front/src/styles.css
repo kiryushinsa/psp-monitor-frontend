@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.header-desktop{
+    background:#2B558C;
+    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    position:fixed;
+    top:0;
+    right:0;
+    left:0px;
+    height:50px;
+    z-index:3
+}
+.left-main-menu{
+    widows: 250px;
+    position:fixed;
+    left:0;
+    top:50px;
+    bottom:0;
+    background:#494949;
+    overflow-y:auto
+}
+.page-wrapper{
+    background:#e5e5e5;
+    padding-bottom:12vh;
+    height: 100%;
+    width: 100%;
+}
+
+.link{
+    color: #f0dede;
+}
+
+.main-content{
+    background-color: #F3F2F2;
+    height: 100%;
+    width: 95%;
+    top: 60px;
+    left: 60px;
+    position: absolute;
+    box-shadow: 0 0 8px 2px rgba(0,0,0,0.5); /* Параметры тени */
+}
+
+.main-table th{
+    border: 1px solid  black;
+}
+
+.main-table{
+    width: 100%;
+
+}
+
+.main-table td{
+    border: 2px solid steelblue;
+}
+
