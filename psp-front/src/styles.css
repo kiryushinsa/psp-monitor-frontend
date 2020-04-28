@@ -19,8 +19,10 @@
     left:0;
     top:50px;
     bottom:0;
+    left: 0px;
     background:#494949;
-    overflow-y:auto
+    
+    
 }
 .page-wrapper{
     background:#e5e5e5;
@@ -34,11 +36,11 @@
 }
 
 .main-content{
-    background-color: #F3F2F2;
+    background-color: grey;
     height: 100%;
-    width: 95%;
+    width: 92%;
     top: 60px;
-    left: 60px;
+    left: 115px;
     position: absolute;
     box-shadow: 0 0 8px 2px rgba(0,0,0,0.5); /* Параметры тени */
 }
@@ -49,10 +51,38 @@
 
 .main-table{
     width: 100%;
-
+    
 }
 
 .main-table td{
     border: 2px solid steelblue;
+    background-color: #e5e5e5;
 }
 
+.active-link{
+    font-weight: bold;
+}
+
+.menu-bar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 110px;
+}
+
+.menu-bar li a{
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.menu-bar li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.middle {
+    top: 60px;
+}
