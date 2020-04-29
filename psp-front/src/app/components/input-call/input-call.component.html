@@ -1,1 +1,14 @@
-    <p>            input-call works!</p>
+    
+
+
+
+    
+<form #myForm="ngForm">  
+<div>
+        Ввод
+        <input  [(ngModel)]="calls.info" type="text"   name="info" />        
+         Кнопка
+        <button type="button" (click)="save(calls)"> Ввод </button>
+
+    </div>
+</form>  

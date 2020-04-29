@@ -16,6 +16,7 @@ export class CallsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.callsList();
+    
   }
 
   callsList(){

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { CallsListComponent } from './components/calls-list/calls-list.component';
@@ -10,7 +12,7 @@ import { InputCallComponent } from './components/input-call/input-call.component
 
 const routes: Routes=[
   {path: 'calls/:id', component: CallsListComponent},
-  {path: 'input/call', component: InputCallComponent},
+  {path: 'input', component: InputCallComponent},
   {path: 'calls', component: CallsListComponent},
   {path: '', redirectTo: '/calls',pathMatch: 'full'},
   {path: '**', redirectTo: '/calls',pathMatch: 'full'},
@@ -19,12 +21,14 @@ const routes: Routes=[
   declarations: [
     AppComponent,
     CallsListComponent,
-    InputCallComponent
+    InputCallComponent,
+    
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CallsService],
   bootstrap: [AppComponent]
