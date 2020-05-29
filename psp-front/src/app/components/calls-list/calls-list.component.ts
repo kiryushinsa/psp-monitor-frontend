@@ -26,4 +26,11 @@ export class CallsListComponent implements OnInit {
       }
     )
   }
+  delete(calls: Calls){
+    this.callsService.deleteCall(calls.id);
+    location.reload();
+  }
+  update(calls: Calls){
+    
+  }
 }

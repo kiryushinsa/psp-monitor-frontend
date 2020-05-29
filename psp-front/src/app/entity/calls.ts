@@ -5,6 +5,7 @@ export class Calls {
     time: Time;
     date: Date;
     info: string;
+    address: string;
     whoSend: string;
     whoAccept: string;
     time_gone: string;

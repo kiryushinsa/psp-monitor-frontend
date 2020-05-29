@@ -1,14 +1,110 @@
     
 
-
-
     
-<form #myForm="ngForm">  
-<div>
-        Ввод
-        <input  [(ngModel)]="calls.info" type="text"   name="info" />        
-         Кнопка
-        <button type="button" (click)="save(calls)"> Ввод </button>
+<form #myForm="ngForm" #signupForm = "ngForm" >  
+    
+
+    <div class="content">
+
+        <div class="form-group">
+            Инфо
+            <input class="form-control" [(ngModel)]="calls.info" type="text"   name="info" required  />        
+        </div>
+
+        <div class="form-group">
+            Время
+            <input class="form-control" [(ngModel)]="calls.time" type="time"   name="time"   required/>        
+        </div>
+
+        <div class="form-group">
+            Дата
+            <input class="form-control" [(ngModel)]="calls.date" type="date"   name="date"  required />        
+        </div>
+
+        <div class="form-group">
+            Кто выслал
+            <input class="form-control" [(ngModel)]="calls.whoSend" type="text"   name="whoSend"  required />        
+        </div>
+
+        <div class="form-group">
+            Кто принял
+            <input class="form-control" [(ngModel)]="calls.whoAccept" type="text"   name="whoAccept"  required />        
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col">
+                    <div class="form-group">
+                        Время выезда
+                        <input class="form-control" [(ngModel)]="calls.time_gone" type="time"   name="time_gone"  required />        
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        Время прибытия
+                        <input class="form-control" [(ngModel)]="calls.time_arrive" type="time"   name="time_arrive"  required />        
+                    </div>  
+                </div> 
+                
+                <div class="col">
+                    <div class="form-group">
+                        Время локализации
+                        <input class="form-control" [(ngModel)]="calls.time_local" type="time"   name="time_local"  required />        
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="form-group">
+                        Время устранения
+                        <input class="form-control" [(ngModel)]="calls.time_destroy" type="time"   name="time_destroy"  required />        
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="form-group">
+                        Время возвращения
+                        <input class="form-control" [(ngModel)]="calls.time_back" type="time"   name="time_back"  required />        
+                    </div>
+                </div>
+
+            </div>
+        </div>           
+        <div class="form-group">
+            Информация
+            <input class="form-control" [(ngModel)]="calls.info_local" type="text"   name="info_local"  required />        
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        Умерло
+                        <input class="form-control" [(ngModel)]="calls.died" type="number"   name="died"  required />        
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        Спасено
+                        <input class="form-control" [(ngModel)]="calls.saved" type="number"   name="saved"   required/>        
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        Пострадало
+                        <input class="form-control" [(ngModel)]="calls.affected" type="number"   name="affected"  required />        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group"> 
+            <button class="btn btn-primary" type="submit" (click)="save(calls)" [disabled]="!signupForm.form.valid">  Ввод </button>
+        </div>
 
     </div>
+
 </form>  

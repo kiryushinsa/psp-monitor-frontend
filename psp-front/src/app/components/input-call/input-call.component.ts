@@ -27,23 +27,23 @@ export class InputCallComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.httpClient.post<Calls>('http://localhost:8080/add/calls',
-    {info: 'angularPostTest102222'}).subscribe(data=>{ }) 
+   //this.httpClient.post<Calls>('http://localhost:8080/add/calls',
+   // {info: 'test2',saved:2}).subscribe(data=>{ }) 
    
   }
   
   save(calls: Calls){
 
     console.log(calls.info);
+    console.log(calls.saved);
+    //console.log(calls.info_local);
+    //Sconsole.log(calls.time);
+    //console.log(calls.date);
+    console.log(calls.time_local);
     this.callsService.createCall(calls);
   }
   
-  /*
-
-  this.httpClient.post<Calls>('http://localhost:8080/add/calls',
-  {info: 'angularPostTest10'}).subscribe(data=>{ }) 
   
-  */
 
   }
 

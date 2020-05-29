@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 
+
 .header-desktop{
     background:#2B558C;
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -13,6 +14,19 @@
     height:50px;
     z-index:3
 }
+
+
+body{
+    overflow: auto;
+}
+clear-fix::after{
+    content: '';
+    display: block;
+    clear:both;
+    height: 0px;
+    visibility: hidden;
+}
+
 .left-main-menu{
     widows: 250px;
     position:fixed;
@@ -37,12 +51,14 @@
 
 .main-content{
     background-color: grey;
-    height: 100%;
     width: 92%;
     top: 60px;
     left: 115px;
+    height: 680px;
+    overflow: auto;
     position: absolute;
-    box-shadow: 0 0 8px 2px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.548); /* Параметры тени */
+    
 }
 
 .main-table th{
@@ -85,4 +101,10 @@
 
 .middle {
     top: 60px;
+}
+
+.content{
+        
+    height: 100%;
+    padding: 3px;
 }

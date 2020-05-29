@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Calls } from '../entity/calls';
-import {map} from 'rxjs/operators'
+import {map, catchError} from 'rxjs/operators'
 
 
 
@@ -28,6 +28,18 @@ export class CallsService {
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response._embedded.call)
     );
+  }
+
+  deleteCall(id: number) {
+    const url = 'http://localhost:8080/add/calls/' + id
+    return this.httpClient.delete(url).
+    subscribe(data=>{ }) 
+    
+  } 
+
+  updateCall(call:Calls){
+    const url = 'http://localhost:8080/add/calls/' + call.id;
+    return this.httpClient.put<Calls>(url, call)
   }
 }
 
