@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+
 import { Calls } from '../entity/calls';
 import {map, catchError} from 'rxjs/operators'
 
@@ -43,10 +44,6 @@ export class CallsService {
   }
 }
 
-
-  
-
-  
 interface GetResponse{
   _embedded:{
     call: Calls[];

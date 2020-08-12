@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm} from '@angular/forms';
 
-
+declare var ymaps:any;
 
 
 @Component({
@@ -23,14 +23,30 @@ export class InputCallComponent implements OnInit {
   constructor(private httpClient: HttpClient,
     private callsService:CallsService) { }
 
-   
-
+    public map :any;
+    public placemark :any;
+    
   ngOnInit(): void {
     
+    this.createMap();
    //this.httpClient.post<Calls>('http://localhost:8080/add/calls',
    // {info: 'test2',saved:2}).subscribe(data=>{ }) 
    
   }
+
+  createMap(){
+
+    ymaps.ready().then(() => {
+      this.map = new ymaps.Map('map', {
+        center: [55.671729, 37.479850],
+        zoom: 16
+      });
+      this.placemark =  new ymaps.Placemark([55.671729, 37.479850]);
+      this.map.geoObjects.add(this.placemark);
+    });
+  }
+
+
   
   save(calls: Calls){
 
@@ -42,10 +58,8 @@ export class InputCallComponent implements OnInit {
     console.log(calls.time_local);
     this.callsService.createCall(calls);
   }
-  
-  
 
-  }
+}
 
   
 

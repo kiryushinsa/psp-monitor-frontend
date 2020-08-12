@@ -8,16 +8,16 @@
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     position:fixed;
-    top:0;
-    right:0;
+    top:0px;
+    right:0px;
     left:0px;
     height:50px;
     z-index:3
 }
 
 
-body{
-    overflow: auto;
+body{  
+    margin: 0;
 }
 clear-fix::after{
     content: '';
@@ -28,15 +28,13 @@ clear-fix::after{
 }
 
 .left-main-menu{
-    widows: 250px;
-    position:fixed;
-    left:0;
+    position:fixed; 
     top:50px;
     bottom:0;
     left: 0px;
+    float: left;
+    width: 120px;
     background:#494949;
-    
-    
 }
 .page-wrapper{
     background:#e5e5e5;
@@ -49,17 +47,38 @@ clear-fix::after{
     color: #f0dede;
 }
 
-.main-content{
-    background-color: grey;
-    width: 92%;
-    top: 60px;
-    left: 115px;
-    height: 680px;
+.content{      
+    height: 100%;
+    background-color: #CCCBCB;  
+    top: 50px;
+    left: 110px;
+    height: 1200px;
+    width: 100%;
     overflow: auto;
     position: absolute;
-    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.548); /* Параметры тени */
+}
+
+.content-input{
+    background-color: aqua;
+    padding: 10px;
+    margin: 0.5%;
+    width: 1200px;
     
 }
+
+.content-calls{
+    background-color: aqua;
+    padding: 10px;
+    margin: 0.5%;
+    width: 1200px;
+}
+
+.map{
+    margin: 0.5%;
+    width: 1000px;
+    height: 1000px;
+}
+
 
 .main-table th{
     border: 1px solid  black;
@@ -67,7 +86,6 @@ clear-fix::after{
 
 .main-table{
     width: 100%;
-    
 }
 
 .main-table td{
@@ -101,10 +119,4 @@ clear-fix::after{
 
 .middle {
     top: 60px;
-}
-
-.content{
-        
-    height: 100%;
-    padding: 3px;
 }
