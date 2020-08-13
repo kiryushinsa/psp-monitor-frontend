@@ -2,6 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+   //* module for address forms
+import { NgxDadataModule } from '@kolkov/ngx-dadata';
+
+  //* module for cookie service 
+import { CookieService } from 'ngx-cookie-service';
+
+
 
 import { AppComponent } from './app.component';
 import { CallsListComponent } from './components/calls-list/calls-list.component';
@@ -29,9 +36,11 @@ const routes: Routes=[
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDadataModule, //* module for address forms
+
   ],
-  providers: [CallsService],
+  providers: [CallsService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
     
 
     
-<form #myForm="ngForm" #signupForm = "ngForm" >     
+<form #myForm="ngForm" #signupForm = "ngForm"  (change)="saveCookies()">     
     <div class="row">
         <div class="col">    
             <div class="content-input">
@@ -32,7 +32,10 @@
 
                 <div class="form-group">
                     Адрес
-                    <input class="form-control" [(ngModel)]="calls.address" type="text"   name="address"  required />        
+                    
+                    <ngx-dadata  [config]="configAddress" [(ngModel)]="calls.address" name="address" id="address" required ></ngx-dadata>
+                    
+                     
                 </div>
 
                 <div class="container">

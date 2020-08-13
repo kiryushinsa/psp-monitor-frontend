@@ -4,6 +4,9 @@ import { CallsService } from 'src/app/services/calls.service';
 import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm} from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { NgxDadataModule, DadataConfig, DadataType,DadataSuggestion, DadataParty} from '@kolkov/ngx-dadata';
+
 
 declare var ymaps:any;
 
@@ -15,23 +18,59 @@ declare var ymaps:any;
 })
 
 
-export class InputCallComponent implements OnInit {
 
+export class InputCallComponent implements OnInit {
   
   calls: Calls = new Calls();
+  private cookieValue: string; 
 
   constructor(private httpClient: HttpClient,
-    private callsService:CallsService) { }
+    private callsService:CallsService,
+    private cookieService: CookieService) { }
 
-    public map :any;
-    public placemark :any;
-    
+  public map :any;
+  public placemark :any;
+
+
+  configAddress: DadataConfig = {
+    apiKey: '2e51c5fbc1a60bd48face95951108560bf03f7d9',
+    type: DadataType.address,
+    locations: [
+      {
+        city: 'Москва',
+      }
+    ]
+  };
+
+
   ngOnInit(): void {
-    
+
+    this.getCookies();
+   // this.cookieService.set( 'Test', 'Hello World' );
     this.createMap();
    //this.httpClient.post<Calls>('http://localhost:8080/add/calls',
    // {info: 'test2',saved:2}).subscribe(data=>{ }) 
-   
+  }
+
+
+
+  deleteCookies(){
+      this.cookieService.deleteAll();
+  }
+
+
+  getCookies(){
+     this.calls.info = this.cookieService.get('info');
+     this.calls.whoSend = this.cookieService.get('whoSend');
+     this.calls.whoAccept = this.cookieService.get('whoAccept');
+     this.calls.address = this.cookieService.get('address');
+  }
+
+  saveCookies(){
+     this.cookieService.set('info', this.calls.info);
+     this.cookieService.set('whoSend', this.calls.whoSend);
+     this.cookieService.set('whoAccept', this.calls.whoAccept );
+     this.cookieService.set('address', this.calls.address);
   }
 
   createMap(){
@@ -41,7 +80,7 @@ export class InputCallComponent implements OnInit {
         center: [55.671729, 37.479850],
         zoom: 16
       });
-      this.placemark =  new ymaps.Placemark([55.671729, 37.479850]);
+      this.placemark =  new ymaps.Placemark([55.671729, 37.479850]); // set placemark
       this.map.geoObjects.add(this.placemark);
     });
   }
@@ -49,17 +88,15 @@ export class InputCallComponent implements OnInit {
 
   
   save(calls: Calls){
-
-    console.log(calls.info);
-    console.log(calls.saved);
-    //console.log(calls.info_local);
-    //Sconsole.log(calls.time);
-    //console.log(calls.date);
-    console.log(calls.time_local);
     this.callsService.createCall(calls);
+    this.deleteCookies();
+    
   }
 
+  
 }
+
+
 
   
 
