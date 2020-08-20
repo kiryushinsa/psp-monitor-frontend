@@ -60,7 +60,7 @@ clear-fix::after{
 }
 
 .content-input{
-    background-color: aqua;
+    background-color: rgba(172, 189, 243, 0.904);
     padding: 10px;
     margin: 0.5%;
     width: 1200px;
@@ -68,10 +68,18 @@ clear-fix::after{
 }
 
 .content-calls{
-    background-color: aqua;
+    background-color: rgb(189, 226, 231);
     padding: 10px;
     margin: 0.5%;
     width: 1200px;
+}
+
+.content-redact{
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 0.5%;
+    width: 1200px;
+    
 }
 
 .map{

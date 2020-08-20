@@ -42,6 +42,15 @@ export class CallsService {
     const url = 'http://localhost:8080/add/calls/' + call.id;
     return this.httpClient.put<Calls>(url, call)
   }
+
+  
+  getCallById(callId: number) : Observable <Calls>
+  {
+    const url = `${this.baseUrl}/${callId}`;
+    
+    return this.httpClient.get<Calls>(url);
+  }
+
 }
 
 interface GetResponse{

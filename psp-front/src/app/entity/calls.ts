@@ -2,7 +2,7 @@ import { Time } from '@angular/common';
 
 export class Calls {
     id: number;
-    time: Time;
+    time: string;
     date: Date;
     info: string;
     address: string;

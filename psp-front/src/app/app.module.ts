@@ -15,12 +15,14 @@ import { CallsListComponent } from './components/calls-list/calls-list.component
 import { HttpClientModule } from '@angular/common/http';
 import { CallsService } from './services/calls.service';
 import {Routes, RouterModule} from '@angular/router';
-import { InputCallComponent } from './components/input-call/input-call.component'
+import { InputCallComponent } from './components/input-call/input-call.component';
+import { RedactCallComponent } from './components/redact-call/redact-call.component'
 
 const routes: Routes=[
-  {path: 'calls/:id', component: CallsListComponent},
+  {path: 'calls/:id', component: RedactCallComponent},
   {path: 'input', component: InputCallComponent},
   {path: 'calls', component: CallsListComponent},
+  {path: 'redactCall', component: RedactCallComponent},
   {path: '', redirectTo: '/calls',pathMatch: 'full'},
   {path: '**', redirectTo: '/calls',pathMatch: 'full'},
 ];
@@ -29,6 +31,7 @@ const routes: Routes=[
     AppComponent,
     CallsListComponent,
     InputCallComponent,
+    RedactCallComponent,
     
   ],
   imports: [
@@ -40,7 +43,7 @@ const routes: Routes=[
     NgxDadataModule, //* module for address forms
 
   ],
-  providers: [CallsService, CookieService],
+  providers: [CallsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

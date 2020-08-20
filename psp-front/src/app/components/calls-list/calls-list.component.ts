@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CallsService } from 'src/app/services/calls.service';
 import { Calls } from 'src/app/entity/calls';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-calls-list',
@@ -10,7 +11,8 @@ import { Calls } from 'src/app/entity/calls';
 export class CallsListComponent implements OnInit {
 
   calls: Calls[];
-  constructor(private callsService: CallsService) {
+  constructor(private callsService: CallsService, 
+    private cookieService: CookieService) {
 
    }
 
@@ -26,11 +28,14 @@ export class CallsListComponent implements OnInit {
       }
     )
   }
+
   delete(calls: Calls){
     this.callsService.deleteCall(calls.id);
     location.reload();
   }
   update(calls: Calls){
-    
+    this.cookieService.set('redId', String(calls.id));
   }
+
+ 
 }
