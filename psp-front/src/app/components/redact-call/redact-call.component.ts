@@ -35,12 +35,12 @@ export class RedactCallComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.getCall();
+   // this.getCall();
     this.intializeFields();
     this.createMap('55.671729', '37.479850');
   }
 
-  getCall(){
+  /*getCall(){
     const id = Number(this.cookieService.get('redId'));
     this.callsService.getCallById(id).subscribe(
       data =>{
@@ -50,7 +50,7 @@ export class RedactCallComponent implements OnInit {
       }
     )
   }
-  
+  */
   
   
   callForm = new FormGroup({
