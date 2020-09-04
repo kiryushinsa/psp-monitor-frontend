@@ -1,23 +1,29 @@
   
-    <div class="header-desktop">
-      <a class="link" href=#></a>
    
-<div class="container">           
-  <div class="row">
-    <div class="col">       
-          <div class="left-main-menu">
-            <nav>
-              <ul class="menu-bar">
-                  <li><a routerLink="/calls" routerLinkActive="active-link">Заявки</a></li>
-                  <li><a routerLink="/input" routerLinkActive="active-link">Заполнить</a></li>
-              </ul>
-            </nav>
-          </div>      
-    </div>
+<div class="row">
+  <div class="col">
+    <div class="left-main-menu">  
+      
+        <div class="logo">
+        </div>   
+        <hr>  
 
-    <div class="content">
-        <router-outlet></router-outlet> 
-    </div>
-    
-  </div>      
-</div>
+        <nav>
+          <ul class="menu-bar">
+              <li><a routerLink="/calls">Вызовы</a></li>
+              <li><a routerLink="/input" >Заполнить</a></li>
+              <li><a routerLink="/calls" >Смены</a></li>
+              <li><a routerLink="/calls" >Статистика</a></li>
+              <li><a routerLink="/calls" >Оборудование</a></li>
+          </ul>
+        </nav>                   
+    </div>     
+  </div>
+
+  <div class="content-background">
+    <div class="content-area">
+      <router-outlet></router-outlet> 
+    </div>  
+  </div>   
+</div>      
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CallsService } from 'src/app/services/calls.service';
 import { Calls } from 'src/app/entity/calls';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-calls-list',
@@ -18,7 +19,7 @@ export class CallsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.callsList();
-    
+  
   }
 
   callsList(){
