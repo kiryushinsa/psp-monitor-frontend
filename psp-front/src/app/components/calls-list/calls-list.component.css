@@ -1,0 +1,88 @@
+.mat-table{
+  width: 70%;
+  background:white;
+  /*table-layout: fixed;*/
+}
+.mat-header-cell{
+  text-align: center;
+  background-color:#eceaea;
+  color: #4E4E4E;
+  opacity: 100%;
+  
+}
+
+
+.mat-column-info{
+  width: 40%;
+}
+
+.mat-column-date{
+  width: 10%;
+  text-align: center;
+}
+  
+.mat-column-time{
+  width: 10%;
+  text-align: center;
+}
+  
+.mat-column-address{
+  width: 30%;
+  text-align: center;
+}
+  
+tr.example-detail-row {
+  background-color:#efefef;
+  height: 0;
+}
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .expanded-table {
+  
+   
+    font-weight: lighter;
+   
+     
+  }
+
+  .expanded-table table{
+    background-color: red;
+    width: 100%;
+    vertical-align: top;
+    display: table-cell;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+  
+ .cell-row{
+   border-left-color: red;
+ }
+
+ .information{
+   background-color: red;
+   width: 60%;
+   height: 100%;
+ }
+  
+ .people{
+   background-color: red;
+ }

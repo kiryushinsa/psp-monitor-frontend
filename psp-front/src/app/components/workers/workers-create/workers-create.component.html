@@ -1,0 +1,64 @@
+<p>Работники / Создать работника</p>
+
+<!--   Блок фамилий     -->
+<div class="container"></div>
+
+<div class="input-block">
+    <div class="row">
+     
+            
+            <div class="col">
+                Фамилия     
+                <input class="form-control" formControlName="first_name" 
+                    type="text" name="first_name" required/> 
+            </div>
+
+            <div class="col">
+                Имя  
+                <input class="form-control" formControlName="last_name" 
+                    type="text" name="last_name" required/>
+            </div>
+
+            <div class="col">
+                Отчество  
+                <input class="form-control" formControlName="middle_name" 
+                type="text" name="middle_name" required/>
+            </div>
+
+          
+    </div>
+</div>
+
+
+    <!-----Классность----->
+
+    
+    <div class="input-block">
+        <mat-form-field appearance="fill">
+            <mat-label>Favorite food</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let level of levels" [value]="level.value">
+                {{level.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    
+
+    <div class="input-block">     
+        <input class="form-control" formControlName="first_name" type="text" name="first_name" required/>
+    </div>      
+    
+
+    <div class="input-block">  
+        <input class="form-control" formControlName="first_name" type="text" name="first_name" required/>
+    </div>
+
+    <div class="input-block">  
+        <input class="form-control" formControlName="first_name" type="text" name="first_name" required/>
+    </div>
+
+    <div class="input-block">  
+        <input class="form-control" formControlName="first_name" type="text" name="first_name" required/>
+    </div>
+

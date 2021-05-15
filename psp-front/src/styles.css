@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body{
     
-    margin: 0;
+    margin: 0px;
 }
 
 .link{
@@ -14,15 +15,20 @@ a {
    } 
 
 
+/** TEST TABLE CALLS-LIST */
+   
 
 
+
+/** END TEST TABLE CALLS-LIST  */
 
 /** MAIN MENU  */
 
 .logo {
     background-image: url("images/logo.svg");
     height: 20px;
-    width: 130px;
+    /*width: 130px;*/
+    width: 90%;
     background-repeat: no-repeat;
     margin-top: 29px;
     margin-left: 10px;
@@ -35,7 +41,7 @@ a {
     bottom:0;
     left: 0px;
     float: left;
-    width: 20%;
+    width: 10%;
     font-size: 16px;
     background: #FFFFFF;
     font-style: normal;
@@ -48,10 +54,8 @@ a {
     width: 100px;
     float: left;
     margin-left: 20px;
-    border: 1px solid #C0CFDB;
-    transform: rotate(180deg);
-   
-    
+    border: 0.5px solid #C0CFDB;
+    transform: rotate(180deg); 
 }
 
 .menu-bar{
@@ -69,7 +73,6 @@ a {
 .menu-bar li a{
     height: 40px;
     display: block;
-    width: 100%;
     padding: 5px;
     padding-left: 20px;
     text-decoration: none;
@@ -79,8 +82,19 @@ a {
 
 .menu-bar li a:hover {
     background: #E6EAEE;
+    border-right: 4px solid ;
     color: #0088F7;
 }
+
+.notifications-menu{
+    position: absolute;
+    background:#FA2929;
+    width: 20px;
+    height: 20px;
+    border-radius: 36px;
+    
+}
+
 
 /** END MAIN MENU  */
 
@@ -89,10 +103,33 @@ a {
 .content-background{       
     background-color:  #eceaea;
     width: 90%;
+    height: 100%;
     left: 10%;
     overflow: auto;
     position: absolute;
     overflow-x:hidden; 
+}
+
+.content-background p{
+    position: absolute;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    left: 2%;
+    top: 23px;  
+    color: #4B6880;
+}
+
+.content-background hr{
+    border: none; /* Убираем границу */
+    height: 0px;
+    width: 95%;
+    position: absolute;
+    top: 60px; 
+    left: 2%;
+    border: 0.4px solid #C0CFDB;
+    transform: rotate(180deg); 
 }
 
 .content-area{
@@ -100,7 +137,7 @@ a {
     margin-top: 105px;
     margin-left: 23px;
     margin-right: 26px;
-    box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.08);
+    /*box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.08);*/
     border-radius: 5px;
 }
 
@@ -108,6 +145,11 @@ a {
     font-family: 'Raleway';  
     padding: 10px;
     margin: 0.5%;
+}
+
+.content-input-area{
+    box-sizing: border-box;
+    padding: 20px;
 }
 
 .map{
@@ -118,8 +160,9 @@ a {
 }
 
 .content-calls{
-    padding: 20px;
-     font-family: 'Raleway';
+    padding: 0px;
+    font-family: 'Raleway';
+    background-color: #eceaea;
 }
 
 .content-redact{
@@ -152,7 +195,16 @@ a {
 }
 
 
+.input-block{
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    border-bottom: 2px solid #DFE7ED;
+    border-left: 7px solid #F6F6F6;
+    
+}
 
 
-
-
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
