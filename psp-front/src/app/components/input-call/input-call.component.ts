@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import {  DadataConfig, DadataType, DadataSuggestion, DadataAddress} from '@kolkov/ngx-dadata';
 import { formatDate } from '@angular/common';
 import { Time } from '@angular/common';
-import { MapOperator } from 'rxjs/internal/operators/map';
+//import { MapOperator } from 'rxjs/internal/operators/map';
 
 
 

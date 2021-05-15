@@ -34,14 +34,15 @@
 
     
     <div class="input-block">
-        <mat-form-field appearance="fill">
-            <mat-label>Favorite food</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let level of levels" [value]="level.value">
-                {{level.name}}
-              </mat-option>
+        <mat-form-field>
+            <mat-select placeholder="How Many?">
+                <mat-option>One</mat-option>
+                <mat-option>Two</mat-option>
+                <mat-option>Three</mat-option>
+                <mat-option>Four</mat-option>
+                <mat-option>Five</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
     </div>
     
 
