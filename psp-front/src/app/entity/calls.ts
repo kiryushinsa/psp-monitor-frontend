@@ -18,4 +18,5 @@ export class Calls {
     died: number;
     saved: number;
     affected: number;
+    squad:string;
 }

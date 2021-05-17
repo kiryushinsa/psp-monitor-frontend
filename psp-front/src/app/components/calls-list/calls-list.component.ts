@@ -43,6 +43,7 @@ export class CallsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.callsList();
+    
   
   }
 
@@ -50,8 +51,11 @@ export class CallsListComponent implements OnInit {
     this.callsService.getCallsList().subscribe(
       data=>{
         this.calls = data;
+       
       }
     )
+  
+    
   }
 
   delete(calls: Calls){

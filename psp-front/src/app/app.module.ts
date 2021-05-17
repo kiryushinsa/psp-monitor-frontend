@@ -25,7 +25,13 @@ import { WorkersCreateComponent } from './components/workers/workers-create/work
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatInputModule} from '@angular/material/input';
+import { WorkShiftsComponent } from './components/workers/work-shifts/work-shifts.component';
+import { WorksShift } from './entity/works-shift';
+import { TechnicCreateComponent } from './components/technic/technic-create/technic-create.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ServiceCreateComponent } from './components/service/service-create/service-create.component';
 const routes: Routes=[
   {path: 'calls/:id', component: RedactCallComponent},
   {path: 'input', component: InputCallComponent},
@@ -33,6 +39,10 @@ const routes: Routes=[
   {path: 'redactCall', component: RedactCallComponent},
   {path:'workers', component: WorkersListComponent},
   {path: 'workers-create', component: WorkersCreateComponent},
+  {path: 'work-shift-create', component:  WorkShiftsComponent},
+  {path:'technic-create',component:TechnicCreateComponent},
+  {path:'service-create/:id',component:ServiceCreateComponent},
+  {path:'service-create',component:ServiceCreateComponent},
   {path: '', redirectTo: '/calls',pathMatch: 'full'},
   {path: '**', redirectTo: '/calls',pathMatch: 'full'},
 ];
@@ -44,6 +54,9 @@ const routes: Routes=[
     RedactCallComponent,
     WorkersListComponent,
     WorkersCreateComponent,
+    WorkShiftsComponent,
+    TechnicCreateComponent,
+    ServiceCreateComponent,
     
   ],
   imports: [
@@ -58,6 +71,9 @@ const routes: Routes=[
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
+    MatInputModule,
+    MatChipsModule,
+    MatAutocompleteModule,
 
   ],
   providers: [CallsService],

@@ -101,13 +101,15 @@ a {
 /** CONTENT */
 
 .content-background{       
-    background-color:  #eceaea;
-    width: 90%;
+    background-color:  #E6EAEE;
     height: 100%;
+    width: 100%;
     left: 10%;
     overflow: auto;
     position: absolute;
     overflow-x:hidden; 
+    z-index: 0;
+
 }
 
 .content-background p{
@@ -124,7 +126,7 @@ a {
 .content-background hr{
     border: none; /* Убираем границу */
     height: 0px;
-    width: 95%;
+    width: 70%;
     position: absolute;
     top: 60px; 
     left: 2%;
@@ -136,9 +138,22 @@ a {
     background: #F9F9F9;
     margin-top: 105px;
     margin-left: 23px;
-    margin-right: 26px;
-    /*box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.08);*/
     border-radius: 5px;
+    width: 80%;
+}
+
+.left-content-area{
+    background: #F9F9F9;
+    margin-top: 105px;
+    margin-left: 23px;
+    border-radius: 5px;
+    
+    width: 800px;
+}
+
+.right-content-area{
+    margin-top: 150px;
+    padding-left: 40px;
 }
 
 .content-input{
@@ -155,8 +170,8 @@ a {
 .map{
     /* map in input calls area */
     margin: 0.5%;
-    width: 500px;
-    height: 500px;
+    width: 435px;
+    height: 435px;
 }
 
 .content-calls{
@@ -169,7 +184,7 @@ a {
     background-color: lightgreen;
     padding: 10px;
     margin: 0.5%;
-    width: 1200px;
+    
     font-family: 'Raleway';
     
 }
@@ -205,6 +220,12 @@ a {
     
 }
 
+/** Текстовое поле с шириной */
+.textarea{
+    width: 700px;
+    height: 100px;
+}
+
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Rubic,  sans-serif; }

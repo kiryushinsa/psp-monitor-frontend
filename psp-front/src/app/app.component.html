@@ -1,43 +1,39 @@
+<div class="left-main-menu">  
   
-   
-<div class="row">
-  <div class="col">
-    <div class="left-main-menu">  
-      
-        <div class="logo">
-        </div>   
-        <hr>  
-        <nav>
-          <ul class="menu-bar">
-              <li><a routerLink="/calls">Вызовы</a></li>
-              <li><a routerLink="/input" >Заполнить</a></li>
-              <li><a routerLink="/calls" >Персонал</a></li>
-              <li><a routerLink="/calls" >Статистика</a></li>
-              <li><a routerLink="/calls" >Оборудование</a></li>
-          </ul>
-        </nav>  
-        <hr>       
-        
-        <nav>
-          <ul class="menu-bar">
-              <li>
-                <a routerLink="/calls">События </a> 
-                
-              </li>
-          </ul>
-        </nav>  
-        
-    </div>     
-  </div>
- 
-  <div class="content-background">
+    <div class="logo">
+    </div>   
+    <hr>  
+    <nav>
+      <ul class="menu-bar">
+          <li><a routerLink="/calls">Вызовы</a></li>
+          <li><a routerLink="/input" >Заполнить</a></li>
+          <li><a routerLink="/workers-create" >Персонал</a></li>
+          <li><a routerLink="/calls" >Статистика</a></li>
+          <li><a routerLink="/technic-create" >Оборудование</a></li>
+      </ul>
+    </nav>  
+    <hr>       
     
-    <p>{{titlePage}} 
+    <nav>
+      <ul class="menu-bar">
+          <li>
+            <a routerLink="/calls">События </a> 
+            
+          </li>
+      </ul>
+    </nav>  
+    
+</div>     
+ 
 
-    <hr>
-    <div class="content-area">
-      <router-outlet></router-outlet> 
-    </div>  
-  </div>   
-</div>      
+<div class="content-background">
+  <p>{{titlePage}} 
+  <hr>
+  
+  <!--<div class="content-area"></div> -->
+    <router-outlet></router-outlet> 
+  
+
+</div>   
+     
 

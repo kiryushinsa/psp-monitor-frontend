@@ -31,6 +31,13 @@ export class AppComponent {
     else if(href == "/redactCall") {
       this.titlePage = "Вызовы / Редактировать вызов";
     }
+    else if(href == "/workers-create") {
+      this.titlePage = "Персонал / Создать работника";
+    }
+    else if(href == "/technic-create") {
+      this.titlePage = "Оборудование / Новое оборудование";
+    }
+  
 
     else {console.log("Page title not received");}
 

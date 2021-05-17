@@ -1,0 +1,61 @@
+<div class="content-area">
+    <form #myForm="ngForm" #signupForm="ngForm"
+    [formGroup]="technicForm">
+
+    <div class="input-block">
+        
+        <div class="row">
+            Наименование     
+            <input class="form-control" formControlName="name" type="text" name="name" required/> 
+        </div>
+
+    </div>
+
+    <div class="input-block">
+        <div class="row">
+            <div class="col">
+                Дата вступления в расчет
+                <input class="form-control" formControlName="start_date"  type="date"   name="start_date"  required />   
+            </div>
+            <div class="col">
+                Пробег при заступлении  
+                <input class="form-control" formControlName="start_mileage" 
+                    type="number" name="start_mileage" required/>
+            </div>
+            <div class="col">
+                Коефициент   
+                <input class="form-control" formControlName="coef" 
+                    type="number" name="coef" required/>
+            </div>
+        </div>
+    </div>
+    <div class="input-block">
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill" class="textarea">
+                    <mat-label>Введите описание инструмента</mat-label>
+                    <textarea matInput class="textarea"  [formControl]="description" ></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="input-block">
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill" class="textarea">
+                    <mat-label > Введите технические характеристики</mat-label>
+                    <textarea matInput [formControl]="characteristics"  class="textarea">
+                    </textarea>
+                </mat-form-field>
+            </div>
+        </div>      
+    </div>
+
+    <div class="input-block">
+        <div class="form-group"> 
+            <button class="btn btn-primary" type="submit" (click)="save(technic)" [disabled]="!signupForm.form.valid">  Ввод </button>
+        </div>
+    </div>
+
+    </form>
+</div>

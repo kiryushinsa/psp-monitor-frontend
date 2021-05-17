@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { Calls } from 'src/app/entity/calls';
 import { CallsService } from 'src/app/services/calls.service';
 import {Router} from '@angular/router';
@@ -9,9 +9,13 @@ import {  DadataConfig, DadataType, DadataSuggestion, DadataAddress} from '@kolk
 import { formatDate } from '@angular/common';
 import { Time } from '@angular/common';
 //import { MapOperator } from 'rxjs/internal/operators/map';
-
-
-
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { WorkerService } from 'src/app/services/workers/worker.service';
+import { Workers } from 'src/app/entity/workers';
 
 declare var ymaps:any;
 
@@ -28,12 +32,131 @@ declare var ymaps:any;
 export class InputCallComponent implements OnInit {
   
   calls: Calls = new Calls();
-  
+  work: Workers[];
+  //! участок chips--------------------------------------------
+
+ 
+
+  visible = true;
+  selectable = true;
+  removable = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  WorkersCtrl = new FormControl();
+  filteredWorkers: Observable<string[]>;
+  addOnBlur = false;
+  workers: any = [];
+
+
+  allworkers:any;
+
+
+  //allworkers: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  @ViewChild('workerInput') workerInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+
+
+
+  //!-------------------------------- конец участка
   constructor(private httpClient: HttpClient,
     private callsService:CallsService,
-    private cookieService: CookieService) { 
+    private cookieService: CookieService,
+    private workerService:WorkerService,) { 
+
+      this.workerService.getWorkersList().subscribe(
+        data=>{
+          this.allworkers = data;
+         
+        }
+      )
+      console.dir(this.allworkers);
+
+      this.filteredWorkers = this.WorkersCtrl.valueChanges.pipe(
+        startWith(null),
+        map((worker: string | null) => worker ? this._filter(worker) : this.allworkers.slice()));
       
     }
+    // !участок кода с чипсом
+    add(event: MatChipInputEvent): void {
+      debugger
+      const input = event.input;
+      const value = event.value;
+     
+      if ((value || '').trim()) {
+        this.workers.push({
+          id:Math.random(),
+          last_name:value.trim(),
+          first_name: "string",
+          middle_name: "string",
+          level: "string",
+          addSpec: "string",
+          imageUrl: "string",
+          address: "string",
+          phone: "string",
+          add_phone: "string",
+          contacts: "string",
+          blood_type:"string",
+          
+        });
+      }
+
+
+      if (input) {
+      input.value = '';
+    }
+  
+      this.WorkersCtrl.setValue(null);
+    }
+  
+    /*
+    remove(worker: string): void {
+      const index = this.workers.indexOf(worker);
+  
+      if (index >= 0) {
+        this.workers.splice(index, 1);
+      }
+    }
+    */
+
+    remove(worker, indx): void {
+      this.workers.splice(indx, 1);
+    }
+  
+    selected(event: MatAutocompleteSelectedEvent): void {
+      this.workers.push(event.option.value);
+
+      this.workerInput.nativeElement.value = '';
+
+      this.WorkersCtrl.setValue(null);
+    }
+  
+    private _filter(value: any): any[] {
+      const filterValue = value.toLowerCase();
+  
+      return this.allworkers.filter(worker => worker.toLowerCase().indexOf(filterValue) === 0);
+    }
+
+    private getWork():Workers[]{
+      this.workerService.getWorkersList().subscribe(
+        data=>{
+          this.work = data;
+         
+        }
+      )
+    
+      //console.log(this.work.values)
+      return this.work;
+    }
+
+    workersList(){
+      this.workerService.getWorkersList().subscribe(
+        data=>{
+          this.work = data;
+        }
+      )
+     
+    }
+
+    //! конец участка кода с чипсом
 
   public map :any;
   public placemark :any;
@@ -52,7 +175,6 @@ export class InputCallComponent implements OnInit {
   
 
   callForm = new FormGroup({
-
     time  : new FormControl(''),
     date: new FormControl(''),
     info: new FormControl(''),
@@ -78,7 +200,7 @@ export class InputCallComponent implements OnInit {
     this.setTimeDate();
     this.getCookies();
     this.createMap('55.671729', '37.479850'); //TODO: base position of the map fixed to position of squad
-   
+    this.workersList();
    //this.httpClient.post<Calls>('http://localhost:8080/add/calls',
    // {info: 'test2',saved:2}).subscribe(data=>{ }) 
   }
@@ -169,7 +291,8 @@ export class InputCallComponent implements OnInit {
     this.calls.time_back = this.callForm.get('time_back').value; 
     this.calls.died = this.callForm.get('died').value;
     this.calls.saved = this.callForm.get('saved').value;
-    this.calls.affected = this.callForm.get('affected').value;  
+    this.calls.affected = this.callForm.get('affected').value;
+    //this.calls.squad = 'http://localhost:8080/api/squad/1'  ;
   }
 
   save(calls: Calls){
