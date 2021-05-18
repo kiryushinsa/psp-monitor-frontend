@@ -1,12 +1,27 @@
+.content{
+  background-color: #E6EAEE;
+    margin-top: 80px;
+    margin-left: 23px;
+    border-radius: 5px;
+    width: 1000px;
+}
+
 .mat-table{
-  width: 70%;
+
   background:white;
+  
   /*table-layout: fixed;*/
 }
+
+.mat-cell {
+  text-align: center;
+  padding: 0px 8px 8px 0;
+}
+
 .mat-header-cell{
   text-align: center;
-  background-color:#eceaea;
-  color: #4E4E4E;
+  background-color: #E6EAEE;
+  color: #585656;
   opacity: 100%;
   
 }
@@ -30,59 +45,117 @@
   width: 30%;
   text-align: center;
 }
+
+
   
 tr.example-detail-row {
-  background-color:#efefef;
+  background-color: #E6EAEE;
   height: 0;
 }
   
   tr.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
+    background-color: #E6EAEE;
+   
   }
   
   tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
+    background-color: #E6EAEE;
+    padding-left: 0px;
   }
   
   .example-element-row td {
+   
     border-bottom-width: 0;
   }
   
   .example-element-detail {
-    
+    background-color:white ;
     overflow: hidden;
     display: flex;
+
   }
   
   .expanded-table {
-  
    
-    font-weight: lighter;
-   
+
+    background-color:white ;
+    font-weight: regular;
+    border-top: 0.4px solid #C0CFDB;
+    width: 100%;
+    padding-left: 0px;
      
   }
 
   .expanded-table table{
-    background-color: red;
+    background-color:white ;
     width: 100%;
     vertical-align: top;
     display: table-cell;
+    padding: 20px;
+    padding-left: 0px;
   }
   
   .example-element-description-attribution {
     opacity: 0.5;
   }
   
- .cell-row{
-   border-left-color: red;
- }
+
 
  .information{
-   background-color: red;
-   width: 60%;
+   width: 600px;
+   padding-top: 10px;
+   background-color:white ;
+   
    height: 100%;
+   padding-left: 30px;
+   padding-right: 0px;
+   overflow: hidden;
+   text-align: left;
  }
   
  .people{
-   background-color: red;
+   
+  background-color:white ;
+   width: 180px;
+   padding-left: 30px;
+   overflow: hidden;
+   white-space: normal;
+   padding-top: 10px;
+  padding-bottom: 10px;
+  border-left: 0.4px solid #C0CFDB;
+  border-right: 0.4px solid #C0CFDB
  }
+
+ 
+ 
+.buttons{
+  background-color: white;
+  padding: 10px;
+  border-top:  0.4px solid #C0CFDB;
+}
+
+.buttons a{
+  font-weight: normal;
+}
+
+
+ .padding-0{
+  padding-right:0;
+  padding-left:0;
+}
+
+mat-cell:first-child,
+mat-footer-cell:first-child,
+mat-header-cell:first-child {
+    padding-left: 0px !important;
+}
+
+.button-new-call{
+
+  font-weight: normal;
+  font-size: 20pt;
+  padding-left: 25px;
+  width: 324px;
+  margin-left: 13px;
+  height: 60px;
+}

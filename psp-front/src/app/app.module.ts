@@ -32,6 +32,7 @@ import { TechnicCreateComponent } from './components/technic/technic-create/tech
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ServiceCreateComponent } from './components/service/service-create/service-create.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 const routes: Routes=[
   {path: 'calls/:id', component: RedactCallComponent},
   {path: 'input', component: InputCallComponent},
@@ -73,7 +74,7 @@ const routes: Routes=[
     MatSelectModule,
     MatInputModule,
     MatChipsModule,
-    MatAutocompleteModule,
+    MatAutocompleteModule,MatExpansionModule,
 
   ],
   providers: [CallsService],

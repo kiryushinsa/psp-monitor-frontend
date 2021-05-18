@@ -56,6 +56,8 @@ a {
     margin-left: 20px;
     border: 0.5px solid #C0CFDB;
     transform: rotate(180deg); 
+    margin-top: 25px; 
+    
 }
 
 .menu-bar{
@@ -189,6 +191,13 @@ a {
     
 }
 
+.filters{
+  
+    margin-top: 140px;
+    
+    width: 326px;
+}
+
 
 
 /** END CONTENT */
@@ -203,12 +212,6 @@ a {
 .main-table{
     width: 100%;
 }
-
-.main-table td{
-    border: 2px solid steelblue;
-    background-color: #e5e5e5;
-}
-
 
 .input-block{
     background-color: white;
@@ -228,4 +231,5 @@ a {
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Rubic,  sans-serif; }
+body { margin: 0; font-family: 'Rubik', sans-serif; }
+

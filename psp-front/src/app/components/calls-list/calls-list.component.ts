@@ -24,9 +24,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export class CallsListComponent implements OnInit {
 
-
-
-
   calls: Calls[];
   columnsToHeader = ['Дата', 'Время', 'Адрес прибытия','Адрес','Тип'];
   //columnsToDisplay = ['date','time','address'];
