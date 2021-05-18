@@ -33,6 +33,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ServiceCreateComponent } from './components/service/service-create/service-create.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { TechnicListComponent } from './components/technic/technic-list/technic-list.component';
 const routes: Routes=[
   {path: 'calls/:id', component: RedactCallComponent},
   {path: 'input', component: InputCallComponent},
@@ -42,6 +43,7 @@ const routes: Routes=[
   {path: 'workers-create', component: WorkersCreateComponent},
   {path: 'work-shift-create', component:  WorkShiftsComponent},
   {path:'technic-create',component:TechnicCreateComponent},
+  {path:'technics',component:TechnicListComponent},
   {path:'service-create/:id',component:ServiceCreateComponent},
   {path:'service-create',component:ServiceCreateComponent},
   {path: '', redirectTo: '/calls',pathMatch: 'full'},
@@ -58,6 +60,7 @@ const routes: Routes=[
     WorkShiftsComponent,
     TechnicCreateComponent,
     ServiceCreateComponent,
+    TechnicListComponent,
     
   ],
   imports: [

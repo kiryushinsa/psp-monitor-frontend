@@ -101,11 +101,18 @@ a {
 /** END MAIN MENU  */
 
 /** CONTENT */
+.content{
+    background-color: #E6EAEE;
+      margin-top: 80px;
+      margin-left: 23px;
+      border-radius: 5px;
+      width: 950px;
+  }
 
 .content-background{       
     background-color:  #E6EAEE;
     height: 100%;
-    width: 100%;
+    width: 90%;
     left: 10%;
     overflow: auto;
     position: absolute;
@@ -142,6 +149,7 @@ a {
     margin-left: 23px;
     border-radius: 5px;
     width: 80%;
+    margin-bottom: 40px;
 }
 
 .left-content-area{
@@ -149,7 +157,7 @@ a {
     margin-top: 105px;
     margin-left: 23px;
     border-radius: 5px;
-    
+    margin-bottom: 40px;
     width: 800px;
 }
 
@@ -194,7 +202,7 @@ a {
 .filters{
   
     margin-top: 140px;
-    
+    margin-left: 30px;
     width: 326px;
 }
 
@@ -202,7 +210,15 @@ a {
 
 /** END CONTENT */
 
+.button-new{
 
+    font-weight: normal;
+    font-size: 20pt;
+    padding-left: 25px;
+    width: 324px;
+    margin-left: 13px;
+    height: 60px;
+  }
 
 
 .main-table th{

@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   setPageTitle(href: string){
-
+/*
     if(href == "/input") {
       this.titlePage = "Вызовы / Новый вызов";
     }
@@ -41,7 +41,7 @@ export class AppComponent {
 
     else {console.log("Page title not received");}
 
-
+*/
   }
 
   

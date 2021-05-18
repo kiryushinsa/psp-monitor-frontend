@@ -1,10 +1,4 @@
-.content{
-  background-color: #E6EAEE;
-    margin-top: 80px;
-    margin-left: 23px;
-    border-radius: 5px;
-    width: 1000px;
-}
+
 
 .mat-table{
 
@@ -150,7 +144,7 @@ mat-header-cell:first-child {
     padding-left: 0px !important;
 }
 
-.button-new-call{
+.button-new{
 
   font-weight: normal;
   font-size: 20pt;

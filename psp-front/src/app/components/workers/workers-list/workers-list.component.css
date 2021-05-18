@@ -1,0 +1,43 @@
+.worker-item{
+    width: 215px;
+    height: 306px;
+    
+    background: #FFFFFF;
+
+    margin-bottom: 30px;
+    padding: 10px;
+    box-shadow: 0px 4px 3px 0px #0000001A;
+
+}
+
+.worker-item:hover{
+    outline: 3px solid #0088F7; /* Параметры рамки */
+   
+}
+
+.filters-workers{
+    margin-top: 100px;
+    margin-left: 20px;
+    width: 326px;
+}
+
+.avatar-worker {
+    vertical-align: middle;
+    
+    border-radius: 50%;
+    background-color: lightblue;
+
+    width: 113px;
+    height: 113px;
+    margin-left: 11px;
+    margin-top: 19px;
+  }
+
+  .fio{
+      padding-top: 16px;
+  }
+  .button-create{
+    height: 60px ;
+    background-color:#0088F7 ;
+    width: 100%;
+  }
