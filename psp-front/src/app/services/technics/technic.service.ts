@@ -20,6 +20,11 @@ export class TechnicService {
     return Myheaders;
   }
 
+  getTechnicList() : Observable<Technic[]> {
+    return this.httpClient.get<GetResponse>('http://localhost:8080/api/technic',{'headers': this.getHeaders()}).pipe(
+      map(response => response._embedded.technic)
+    );
+  }
 
   createTechnic(technic: Technic){
     return this.httpClient.post<Technic>('http://localhost:8080/api/technic',technic,{'headers': this.getHeaders()}).

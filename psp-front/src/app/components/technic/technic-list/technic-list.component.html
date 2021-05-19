@@ -1,14 +1,101 @@
-<p>Оборудование / Все Оборудование</p>
+<p>Оборудование / Все оборудование</p>
 
 <div class="row">
     <div class="col">
-        <div class="content">
-            dsadasdasdas
-        </div>
-    </div>
 
+        <div class="content" style="padding: 20px;">
+            <div class="row">
+                <div *ngFor = "let technic of technics" class="row-md-3">
+                  <div class="technic-item">
+                    {{technic.id}} {{technic.name}}
+                  </div>
+                  
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
     <div class="col">
+
+        <div class="filters-secondary">
+            <div class="row">
+              <a class="btn btn-primary btn-lg" href="../technic-create">Новoе оборудование</a>
+          
+            </div>
+           
+            <div class="row pt-4 w-auto p-3">
+              
+              <input class="form-control" formControlName="whoAccept" type="text" placeholder="Поиск">
+           
+            </div>
+      
+            <div class="row pt-2">
+              <mat-accordion class="example-headers-align" multi>
+      
+                <!--* start of collapse panel description-->
+                <mat-expansion-panel>
+      
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Класс
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                
+                    <mat-form-field>
+                      <mat-label>Класс</mat-label>
+                      <input matInput>
+                    </mat-form-field>
+              
+                </mat-expansion-panel>
+                <!--* END-->
+      
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Группа крови
+                    </mat-panel-title>
+                     
+                  </mat-expansion-panel-header>
+              
+                  <mat-form-field>
+                    <mat-label>Группа крови</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+              
+                </mat-expansion-panel>
+      
+                <!--** NEXT--->
+      
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Статус
+                    </mat-panel-title>
+                     
+                  </mat-expansion-panel-header>
+              
+                  <mat-form-field>
+                    <mat-label>Статус</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+              
+                </mat-expansion-panel>
+      
+                 <!--** NEXT--->
+      
+
+      
+                   <!--** NEXT--->
+      
+      
+              </mat-accordion>
+      
+            </div>
+          </div>
+
+
 
     </div>
 </div>
-
