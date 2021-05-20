@@ -45,7 +45,7 @@ export class TechnicCreateComponent implements OnInit {
     this.technic.start_mileage = this.technicForm.get('start_mileage').value;
     this.technic.coef = this.technicForm.get('coef').value;
     this.technic.description = this.description.value;
-    this.technic.characteristics = this.characteristics.value;
+    this.technic.characteristic = this.characteristics.value;
     this.technic.squad = 'http://localhost:8080/api/squad/1';
     
     

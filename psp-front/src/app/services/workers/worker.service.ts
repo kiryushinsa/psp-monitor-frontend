@@ -11,7 +11,7 @@ export class WorkerService {
 
   private baseUrl = 'http://localhost:8080/api/workers';
   private addUrl = 'localhost:8080/workers'
-
+  workerId;
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -34,6 +34,27 @@ export class WorkerService {
       map(response => response._embedded.worker)
     );
   }
+
+  getWorkerById(callId: number) : Observable <Workers>
+  {
+    const url = `${this.baseUrl}/${callId}`;
+    
+    return this.httpClient.get<Workers>(url,{'headers': this.getHeaders()});
+  }
+
+  updateWorker(worker:Workers){
+    const url = "http://localhost:8080/api/workers/" + worker.id;
+   
+
+    return this.httpClient.put<any>(url, worker,{'headers': this.getHeaders()}) .subscribe(data => this.  workerId = data.id);
+  }
+
+  deleteWorker(id: number) {
+    const url = 'http://localhost:8080/api/workers/' + id
+    return this.httpClient.delete(url,{'headers': this.getHeaders()}).
+    subscribe(data=>{ }) 
+    
+  } 
 
 }
 

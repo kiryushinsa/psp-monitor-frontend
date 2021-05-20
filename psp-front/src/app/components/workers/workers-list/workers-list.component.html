@@ -5,25 +5,28 @@
         <div class="content" style="padding: 20px;">
             <div class="row">
                 <div *ngFor = "let worker of workers" class="col-md-3">
+                 
+                      <div class="worker-item" [routerLink]="['/workers',this.worker.id ]" >
+                        
+                            <img class="avatar-worker">   
 
-                    <div class="worker-item">
-                      
-                          <img class="avatar-worker">   
-
-                          <div class="fio">
-                            {{worker.last_name}}
-                            
-                            <br>
-                            {{worker.first_name}}
-                            {{worker.middle_name}}
-                            <br>
-                            Спасатель
-                          </div>
-                    </div>
-
+                            <div class="fio">
+                              {{worker.last_name}}
+                              
+                              <br>
+                              {{worker.first_name}}
+                              {{worker.middle_name}}
+                              <br>
+                              Спасатель
+                              
+                             
+                            </div>
+                      </div>
+                   
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="col">

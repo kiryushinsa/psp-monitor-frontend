@@ -243,6 +243,18 @@ a {
     
 }
 
+.fixed-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 90px;
+    
+    width: 100%;
+    background-color: white;
+    color: white;
+    text-align: center;
+}
+
 /** Текстовое поле с шириной */
 .textarea{
     width: 700px;
@@ -252,4 +264,5 @@ a {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Rubik', sans-serif; }
+
 

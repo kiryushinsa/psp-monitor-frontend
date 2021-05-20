@@ -11,6 +11,7 @@
 }
 
 .worker-item:hover{
+  
     outline: 3px solid #0088F7; /* Параметры рамки */
    
 }

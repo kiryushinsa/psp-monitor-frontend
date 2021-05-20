@@ -294,7 +294,7 @@ export class InputCallComponent implements OnInit {
     this.calls.affected = this.callForm.get('affected').value;
     //this.calls.squad = 'http://localhost:8080/api/squad/1'  ;
   }
-
+ 
   save(calls: Calls){
     this.intializeCall(); // *set calls fields from form.controls
     this.callsService.createCall(calls);

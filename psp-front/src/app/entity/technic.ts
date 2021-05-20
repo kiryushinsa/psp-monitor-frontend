@@ -6,7 +6,7 @@ export class Technic {
     current_mileage: number;
     coef: number;
     description: string;
-    characteristics: string;
+    characteristic: string;
     img_url: string;
     squad: string;
 

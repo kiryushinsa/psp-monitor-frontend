@@ -34,16 +34,24 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ServiceCreateComponent } from './components/service/service-create/service-create.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { TechnicListComponent } from './components/technic/technic-list/technic-list.component';
+import { WorkersRedactComponent } from './components/workers/workers-redact/workers-redact.component';
+import { TechnicRedactComponent } from './components/technic/technic-redact/technic-redact.component';
+import { ServiceListComponent } from './components/service/service-list/service-list.component';
+import { ServiceRedactComponent } from './components/service/service-redact/service-redact.component';
+import { WorkersCallComponent } from './components/workers/workers-call/workers-call.component';
+import { TechnicCallsComponent } from './components/technic/technic-calls/technic-calls.component';
+import { TechnicServiceComponent } from './components/service/technic-service/technic-service.component';
 const routes: Routes=[
-  {path: 'calls/:id', component: RedactCallComponent},
+  {path: 'call/:id', component: RedactCallComponent},
   {path: 'input', component: InputCallComponent},
   {path: 'calls', component: CallsListComponent},
-  {path: 'redactCall', component: RedactCallComponent},
   {path:'workers', component: WorkersListComponent},
-  {path: 'workers-create', component: WorkersCreateComponent},
-  {path: 'work-shift-create', component:  WorkShiftsComponent},
+  {path:'workers/:id', component:WorkersRedactComponent},
+  {path:'workers-create', component: WorkersCreateComponent},
+  {path:'work-shift-create', component:  WorkShiftsComponent},
   {path:'technic-create',component:TechnicCreateComponent},
   {path:'technics',component:TechnicListComponent},
+  {path:'technics/:id',component:TechnicRedactComponent},
   {path:'service-create/:id',component:ServiceCreateComponent},
   {path:'service-create',component:ServiceCreateComponent},
   {path: '', redirectTo: '/calls',pathMatch: 'full'},
@@ -61,6 +69,13 @@ const routes: Routes=[
     TechnicCreateComponent,
     ServiceCreateComponent,
     TechnicListComponent,
+    WorkersRedactComponent,
+    TechnicRedactComponent,
+    ServiceListComponent,
+    ServiceRedactComponent,
+    WorkersCallComponent,
+    TechnicCallsComponent,
+    TechnicServiceComponent,
     
   ],
   imports: [

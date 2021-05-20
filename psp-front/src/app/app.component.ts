@@ -10,12 +10,14 @@ export class AppComponent {
   title = 'psp-front';
   titlePage;
   constructor(public router: Router) {
+
     this.router.events.subscribe(event =>{
       if(event instanceof NavigationEnd){
         console.log(window.location.pathname);
         this.setPageTitle(window.location.pathname)
       }
     })
+    
   }
 
   setPageTitle(href: string){

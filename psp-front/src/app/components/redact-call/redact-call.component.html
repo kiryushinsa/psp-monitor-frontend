@@ -1,153 +1,167 @@
-<p>Вызовы / Редактировать вызов</p> 
-<form #myForm="ngForm" #signupForm = "ngForm" [formGroup]="callForm" >     
+<p>Вызовы / Редактировать вызов № {{this.id}}</p> 
 
-    <div class="row">
-        <div class="col">    
-            <div class="content-redact">
-                <div class="form-group">
-                    Первичная информация {{call.id}}
-                    <input class="form-control" value={{call.info}} formControlName="info"  type="text"   name="info" required  />        
-                </div>
-
-                <div class="form-group">
-                    Время
-                    <input class="form-control" value={{call.time}} formControlName="time" type="time"   name="time"   required/>        
-                </div>
-
-                <div class="form-group">
-                    Дата
-                    <input class="form-control"  value={{call.date}} formControlName="date"  type="date"   name="date"  required />        
-                </div>
-
-                <div class="form-group">
-                    Кто выслал
-                    <input class="form-control"  value={{call.whoSend}} formControlName="whoSend" type="text"   name="whoSend"  required />        
-                </div>
-
-                <div class="form-group">
-                    Кто принял
-                    <input class="form-control"  value={{call.whoAccept}} formControlName="whoAccept" type="text"   name="whoAccept"  required />        
-                </div>
-
-                <div class="form-group">
-                    Адрес
-                    <ngx-dadata  [config]="configAddress" formControlName="address" name="address" (selected)="onAddressSelected($event)" id="address" required ></ngx-dadata> 
-                </div>
-
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="form-group">
-                                Время выезда
-                                <input class="form-control" value={{call.time_gone}} formControlName="time_gone" type="time"   name="time_gone"  required />        
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="form-group">
-                                Время прибытия
-                                <input class="form-control" value={{call.time_arrive}} formControlName="time_arrive" type="time"   name="time_arrive"  required />        
-                            </div>  
-                        </div> 
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                Время локализации
-                                <input class="form-control" value={{call.time_local}} formControlName="time_local" type="time"   name="time_local"  required />        
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                Время устранения
-                                <input class="form-control" value={{call.time_destroy}} formControlName="time_destroy" type="time"   name="time_destroy"  required />        
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                Время возвращения
-                                <input class="form-control" value={{call.time_back}} formControlName="time_back" type="time"   name="time_back"  required />        
-                            </div>
-                        </div>
-
+ 
+<div class="row">
+    <div class="col-md-auto">
+        <div class="left-content-area">
+            <form #myForm="ngForm" #signupForm = "ngForm" [formGroup]="callForm" >
+                <div class="row">
+                    <div class="col">    
+                    <div class="input-block">
+                            Первичная информация
+                            <input class="form-control" formControlName="info"  type="text"   name="info" value="{{this.calls.info}}"  required  />        
                     </div>
-                    <!--- col of buttons which set time -->
-                    <div class="row">
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <button class="btn btn-warning offset-md-4" type="submit" (click)="setTimeToFormControl('time_gone')">Выезд</button>
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_arrive')">Прибытие</button>
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_local')">Локализация</button>
-                            </div>
-                        </div>
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_destroy')">Устранение</button>
-                            </div>
-                        </div>
 
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_back')">Возвращение</button>
+                    <div class="input-block">
+                        <div class="row">
+                                <div class="col">
+                                    Время
+                                    <input class="form-control" formControlName="time" type="time"   name="time" value="{{this.calls.time}}"   required/> 
+                                </div>
+                                <div class="col">
+                                    Дата
+                                    <input class="form-control" formControlName="date"  type="date" name="date" value="{{this.calls.date}}" required /> 
+                                </div>
                             </div>
-                        </div>
-
                     </div>
-                </div>           
-                <div class="form-group">
-                    Информация
-                    <input class="form-control" value={{call.info_local}} formControlName="info_local" type="text"   name="info_local"  required />        
-                </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                Умерло
-                                <input class="form-control" value={{call.died}} formControlName="died" type="number"   name="died"  required />        
-                            </div>
-                        </div>
+                    <div class="input-block">
+                            Кто выслал
+                            <input class="form-control" formControlName="whoSend" type="text"   name="whoSend" value="{{this.calls.whoSend}}" required /> 
+                    </div>
 
-                        <div class="col">
-                            <div class="form-group">
-                                Спасено
-                                <input class="form-control" value={{call.saved}} formControlName="saved" type="number"   name="saved"   required/>        
-                            </div>
-                        </div>
+                    <div class="input-block">
+                            Кто принял
+                            <input class="form-control" formControlName="whoAccept" type="text"   name="whoAccept" value="{{this.calls.whoAccept}}"  required /> 
+                    </div>
+                            
+                    <div class="input-block">
+                            Адрес
+                            <ngx-dadata  [config]="configAddress" formControlName="address" name="address" 
+                                (selected)="onAddressSelected($event)" id="address"  required ></ngx-dadata>
+                    </div>
 
-                        <div class="col">
-                            <div class="form-group">
-                                Пострадало
-                                <input class="form-control" value={{call.affected}} formControlName="affected" type="number"   name="affected"  required />        
+                    <div class="input-block">
+                    
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="col">
+                                    
+                                    <input class="form-control" formControlName="time_gone" type="time"   name="time_gone" value="{{this.calls.time_gone}}" required />
+                                </div>
+
+                                <div class="col">
+                                    <button class="btn btn-warning offset-md-4" type="submit" (click)="setTimeToFormControl('time_gone')">Выезд</button>
+                                </div>
+                            
+                                <div class="col">
+                                    <input class="form-control" formControlName="time_arrive" type="time"   name="time_arrive" value="{{this.calls.time_arrive}}"  required /> 
+                                </div>
+
+                                <div class="col">
+                                    <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_arrive')">Прибытие</button>
+                                </div>
+
                             </div>
+
+                            <div class="row " style="padding-top: 8px;">
+
+                                <div class="col">
+                                    <input class="form-control" formControlName="time_local" type="time"   name="time_local" value="{{this.calls.time_local}}"  required />
+                                </div>
+
+                                <div class="col">
+                                    <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_local')">Локализация</button>
+                                </div>
+
+                                <div class="col">
+                                    <input class="form-control" formControlName="time_destroy" type="time"   name="time_destroy" value="{{this.calls.time_destroy}}" required /> 
+                                </div>
+
+                                <div class="col">
+                                    <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_destroy')">Устранение</button>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top: 8px;">
+                                <div class="col">
+                                    <input class="form-control" formControlName="time_back" type="time"   name="time_back" value="{{this.calls.time_back}}"  required />
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-warning offset-md-2" type="submit" (click)="setTimeToFormControl('time_back')">Возвращение</button>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="input-block">
+                            Информация
+                            <input class="form-control" formControlName="info_local" type="text"   name="info_local" value="{{this.calls.info_local}}"  required />    
+                    </div>
+
+                    <div class="input-block">
+                        <div class="row">
+                                <div class="col">
+                                    Погибло
+                                    <input class="form-control" formControlName="died" type="number"   name="died" value="{{this.calls.died}}" required />      
+                                </div>
+
+                                <div class="col">
+                                    Спасено
+                                    <input class="form-control" formControlName="saved" type="number"   name="saved" value="{{this.calls.saved}}"  required/>        
+                                </div>
+
+                                <div class="col">
+                                    Пострадало
+                                    <input class="form-control" formControlName="affected" type="number"   name="affected" value="{{this.calls.affected}}" required />        
+                                </div>
                         </div>
                     </div>
+
+                        <!-- ! input personal       
+                    <div class="input-block">
+                        <mat-form-field class="example-chip-list">
+                            <mat-chip-list #chipList>
+                                <mat-chip *ngFor="let worker of workers;let indx=index;" [selectable]="selectable" [removable]="removable" (removed)="remove(worker,indx)">
+                                    {{worker.last_name}}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input placeholder="New fruit..." #workerInput [formControl]="WorkersCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                <mat-option *ngFor="let worker of filteredWorkers | async" [value]="worker">
+                                    {{worker.last_name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+
+                        
+                    </div>
+                        <!-- !end -->
+                  
+                    <div class="input-block row gx-4">
+                        <button class="btn btn-primary col" type="submit" (click)="update(calls)" >Сохранить</button>
+                         <button class="btn btn-danger col"  type="submit" (click)="delete(this.id)" routerLink="/calls">Удалить</button>
+                    </div>
+               
+                    
+
+
+                    </div>
+
+                    
                 </div>
 
-                <div class="form-group"> 
-                    <button class="btn btn-primary" type="submit"  [disabled]="!signupForm.form.valid">Обновить данные</button>
-                </div>
-            </div>
+
+            </form>
         </div>
+    </div>
 
-        <div class="col">
-            <!--- Yandex maps block -->
+    <div class="col">
+        <div class="right-content-area">
+    <!--- Yandex maps block -->
             <div id="map" class="map"></div>
         </div>
     </div>
-</form>  
+</div>
+    
+    

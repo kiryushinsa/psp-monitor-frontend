@@ -9,7 +9,7 @@ import {map, catchError} from 'rxjs/operators'
   providedIn: 'root'
 })
 export class TechnicService {
-
+id;
   private baseUrl = 'http://localhost:8080/api/technic';
   constructor(private httpClient: HttpClient) { }
 
@@ -35,6 +35,26 @@ export class TechnicService {
     return this.httpClient.post<Service>('http://localhost:8080/api/service',service,{'headers': this.getHeaders()}).
     subscribe(data=>{ }) 
   }
+
+  getTechnicById(id:number){
+    const url = `${this.baseUrl}/${id}`;
+    
+    return this.httpClient.get<Technic>(url,{'headers': this.getHeaders()});
+  }
+
+  updateTechnic(technic: Technic){
+    const url = `${this.baseUrl}/${technic.id}`;
+
+    return this.httpClient.put<any>(url, technic,{'headers': this.getHeaders()}) .subscribe(data => this.id = data.id);
+  }
+
+  deleteTechnic(id: number) {
+    const url = 'http://localhost:8080/api/technic/' + id
+    return this.httpClient.delete(url,{'headers': this.getHeaders()}).
+    subscribe(data=>{ }) 
+    
+  } 
+
 
 }
 interface GetResponse{

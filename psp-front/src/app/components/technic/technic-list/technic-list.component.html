@@ -6,7 +6,7 @@
         <div class="content" style="padding: 20px;">
             <div class="row">
                 <div *ngFor = "let technic of technics" class="row-md-3">
-                  <div class="technic-item">
+                  <div class="technic-item" [routerLink]="['/technics',this.technic.id ]">
                     {{technic.id}} {{technic.name}}
                   </div>
                   

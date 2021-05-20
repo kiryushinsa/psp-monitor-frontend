@@ -5,7 +5,7 @@ import { CallsService } from 'src/app/services/calls.service';
 import { NgForm, NgModel, FormGroup, FormControl, Validators, FormControlName} from '@angular/forms';
 import {  DadataConfig, DadataType, DadataSuggestion, DadataAddress} from '@kolkov/ngx-dadata';
 import { formatDate } from '@angular/common';
-
+import {Router, ActivatedRoute, Params} from '@angular/router';
 declare var ymaps:any;
 
 @Component({
@@ -15,13 +15,35 @@ declare var ymaps:any;
 })
 export class RedactCallComponent implements OnInit {
 
-  call : Calls = new Calls();
+  calls : Calls = new Calls();
+  id:number;
+
 
   constructor( private callsService:CallsService,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService,
+    private activateRoute: ActivatedRoute,
+    ) { 
+
+      if(Number(activateRoute.snapshot.params['id'])){
+        
+        this.id = activateRoute.snapshot.params['id'];
+        
+        this.callsService.getCallById(this.id).subscribe(
+          data =>{
+            this.calls = data;
+          }
+        )
+
+            }
+      else{
+        // TODO: Сделать алерт для не чисел
+        console.warn("Error call code");
+      }
+    }
     
   public map :any;
   public placemark :any;
+  
 
 
   configAddress: DadataConfig = {
@@ -38,6 +60,9 @@ export class RedactCallComponent implements OnInit {
     //this.getCall();
     this.intializeFields();
     this.createMap('55.671729', '37.479850');
+
+   
+
   }
 
   /*getCall(){
@@ -74,8 +99,41 @@ export class RedactCallComponent implements OnInit {
 });
 
 intializeFields() {
-  
+   
+
+    if(this.callForm.get('info').value)
+    {
+    this.calls.info = this.callForm.get('info').value;
+    }
+    if(this.callForm.get('time').value){this.calls.time = this.callForm.get('time').value;}
+    if(this.callForm.get('date').value){ this.calls.date = new Date ( this.callForm.get('date').value);}
+    if(this.callForm.get('whoSend').value){ this.calls.whoSend = this.callForm.get('whoSend').value;}
+    if(this.callForm.get('whoAccept').value){ this.calls.whoAccept = this.callForm.get('whoAccept').value;}
+    //this.calls.address = this.callForm.get('address').value;}
+    if(this.callForm.get('info_local').value){  this.calls.info_local = this.callForm.get('info_local').value;}
+    if(this.callForm.get('time_gone').value){  this.calls.time_gone = this.callForm.get('time_gone').value;}
+    if(this.callForm.get('time_arrive').value){ this.calls.time_arrive = this.callForm.get('time_arrive').value;}
+    if(this.callForm.get('time_local').value){ this.calls.time_local = this.callForm.get('time_local').value;}
+    if(this.callForm.get('time_destroy').value){ this.calls.time_destroy = this.callForm.get('time_destroy').value;}
+    if(this.callForm.get('time_back').value){ this.calls.time_back = this.callForm.get('time_back').value; }
+    if(this.callForm.get('died').value){ this.calls.died = this.callForm.get('died').value;}
+    if(this.callForm.get('saved').value){ this.calls.saved = this.callForm.get('saved').value;}
+    if(this.callForm.get('affected').value){ this.calls.affected = this.callForm.get('affected').value;}
+    
 }
+
+
+update(calls: Calls){
+  this.intializeFields();
+  this.callsService.updateCall(calls);
+    
+}
+delete(id: number){
+  this.callsService.deleteCall(id);
+}
+
+
+// ** Инициализация и обработка карты
 
 onAddressSelected(event: DadataSuggestion){
   const addressData = event.data as DadataAddress;
@@ -96,7 +154,9 @@ createMap(lat: string, lon: string){
     this.map.geoObjects.add(this.placemark);
   });
 }
-  
+
+//*-----------------
+
 
   setTimeToFormControl(field : string){
 

@@ -16,7 +16,7 @@ export class CallsService {
   private baseUrl = 'http://localhost:8080/api/calls';
   private addUrl = 'localhost:8080/add/calls'
 
-  
+  callid;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -48,8 +48,10 @@ export class CallsService {
   } 
 
   updateCall(call:Calls){
-    const url = 'http://localhost:8080/add/calls/' + call.id;
-    return this.httpClient.put<Calls>(url, call,{'headers': this.getHeaders()})
+    const url = "http://localhost:8080/api/calls/" + call.id;
+   
+
+    return this.httpClient.put<any>(url, call,{'headers': this.getHeaders()}) .subscribe(data => this.callid = data.id);
   }
 
   
@@ -59,6 +61,9 @@ export class CallsService {
     
     return this.httpClient.get<Calls>(url,{'headers': this.getHeaders()});
   }
+
+
+ 
 
 }
 
