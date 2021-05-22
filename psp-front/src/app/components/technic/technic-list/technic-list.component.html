@@ -8,6 +8,9 @@
                 <div *ngFor = "let technic of technics" class="row-md-3">
                   <div class="technic-item" [routerLink]="['/technics',this.technic.id ]">
                     {{technic.id}} {{technic.name}}
+                    
+                    <a [routerLink]="['/service-create',technic.id]"> Провести обслуживание </a>
+
                   </div>
                   
 

@@ -115,30 +115,31 @@
                         </div>
                     </div>
 
-                        <!-- ! input personal       
+                          <!-- reserved for personal-->
                     <div class="input-block">
+                     
                         <mat-form-field class="example-chip-list">
                             <mat-chip-list #chipList>
                                 <mat-chip *ngFor="let worker of workers;let indx=index;" [selectable]="selectable" [removable]="removable" (removed)="remove(worker,indx)">
                                     {{worker.last_name}}
-                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    <mat-icon matChipRemove *ngIf="removable">X</mat-icon>
                                 </mat-chip>
-                                <input placeholder="New fruit..." #workerInput [formControl]="WorkersCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                                <input placeholder="Введите работников" #workerInput [formControl]="workerCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
                                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
                             </mat-chip-list>
                             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                                <mat-option *ngFor="let worker of filteredWorkers | async" [value]="worker">
+                                <mat-option *ngFor="let worker of filteredworkers | async" [value]="worker">
                                     {{worker.last_name}}
                                 </mat-option>
                             </mat-autocomplete>
                         </mat-form-field>
-                        
                         
                     </div>
                         <!-- !end -->
                     
                     <div class="input-block">
                         <button class="btn btn-primary" type="submit" (click)="save(calls)" [disabled]="!signupForm.form.valid">  Ввод </button>
+                        <button class="btn btn-info" printSectionId="pagetoprint" ngxPrint>Распечатать</button>
                     </div>
                     
                     
@@ -159,3 +160,241 @@
         </div>
     </div>
 </div>
+
+
+<!-- TODO: PRINT SELECTION HIDED IN THE PAGE  ------------------------------------------------------>
+<div id="pagetoprint" style="opacity: 100%;">
+    <p style="display: none;">
+
+<!-- ?-------------------------        INPUT DOCUMENT ------------------------ -->
+
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.6.2 (Linux)">
+	<META NAME="AUTHOR" CONTENT="Kiryushin">
+	<META NAME="CREATED" CONTENT="20210522;114300000000000">
+	<META NAME="CHANGEDBY" CONTENT="Kiryushin">
+	<META NAME="CHANGED" CONTENT="20210522;114400000000000">
+	<META NAME="AppVersion" CONTENT="15.0000">
+	<META NAME="DocSecurity" CONTENT="0">
+	<META NAME="HyperlinksChanged" CONTENT="false">
+	<META NAME="LinksUpToDate" CONTENT="false">
+	<META NAME="ScaleCrop" CONTENT="false">
+	<META NAME="ShareDoc" CONTENT="false">
+	<STYLE TYPE="text/css">
+	
+		@page { margin-top: 0.47in; margin-bottom: 0.47in }
+		P { margin-bottom: 0.08in; direction: ltr; line-height: 100%; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.cjk { font-family: "Times New Roman"; font-size: 12pt; so-language: ru-RU }
+		P.ctl { font-family: "Times New Roman"; font-size: 12pt }
+	
+	</STYLE>
+</HEAD>
+
+
+
+
+
+        <BODY LANG="ru-RU" DIR="LTR">
+        <P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><SPAN STYLE="text-transform: uppercase"><B>АВАРИЙНО-СПАСАТЕЛЬНОЕ
+        ФОРМИРОВАНИЕ</B></SPAN></P>
+        <P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><SPAN STYLE="text-transform: uppercase"><B>РОО
+        ОСПСО</B></SPAN></P>
+        <P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in; text-transform: uppercase">
+        <BR>
+        </P>
+        <P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><SPAN STYLE="text-transform: uppercase"><B>Наряд-задание
+        №_________</B></SPAN></P>
+        <P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0in"><B>на
+        производство аварийно-спасательных
+        работ</B></P>
+        <P CLASS="western" STYLE="margin-bottom: 0in"><A NAME="_GoBack"></A><BR>
+        </P>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">Время
+        получения сигнала_____________________               
+            «____»_________________2021 года<BR><BR>
+        </P>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in">Источник
+        информации_________________________________________________________________<BR><BR>
+        </P>
+        <TABLE WIDTH=680 CELLPADDING=7 CELLSPACING=0>
+          <COL WIDTH=98>
+          <COL WIDTH=99>
+          <COL WIDTH=99>
+          <COL WIDTH=99>
+          <COL WIDTH=99>
+          <COL WIDTH=99>
+          <TR VALIGN=TOP>
+            <TD WIDTH=98 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">dasda</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">asasd</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+          </TR>
+          <TR VALIGN=TOP>
+            <TD WIDTH=98 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">ds</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">asd</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+          </TR>
+          <TR VALIGN=TOP>
+            <TD WIDTH=98 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">d</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">dsadsa</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">dasdasd</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">asdas</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">dsad</SPAN></P>
+            </TD>
+          </TR>
+          <TR VALIGN=TOP>
+            <TD WIDTH=98 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+          </TR>
+          <TR VALIGN=TOP>
+            <TD WIDTH=98 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">das</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">dd</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">sd</SPAN></P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US">sad</SPAN></P>
+            </TD>
+          </TR>
+          <TR VALIGN=TOP>
+            <TD WIDTH=98 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+            <TD WIDTH=99 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
+              <P CLASS="western" ALIGN=JUSTIFY><BR>
+              </P>
+            </TD>
+          </TR>
+        </TABLE>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" STYLE="margin-bottom: 0in">Краткое описание
+        ЧС/ описание работ:
+        ___________________________________________________
+        <BR>____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________</P>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+        </P>
+        <P CLASS="western" STYLE="margin-bottom: 0in">Руководитель
+        ликвидации
+        ЧС	______________________		__________________________</P>
+        <P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+        </P>
+        </BODY>
+<!-- ?-------------------------      END  INPUT DOCUMENT ------------------------ -->
+    </p>
+</div>
+

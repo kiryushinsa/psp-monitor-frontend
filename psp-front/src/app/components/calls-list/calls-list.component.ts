@@ -51,7 +51,6 @@ export class CallsListComponent implements OnInit {
        
       }
     )
-  
     
   }
 

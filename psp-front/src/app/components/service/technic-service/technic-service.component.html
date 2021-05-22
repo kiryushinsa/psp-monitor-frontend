@@ -1,1 +1,58 @@
-<p>technic-service works!</p>
+<p>Оборудование / Все сервисы: {{this.id}}</p>
+
+
+<div class="content" style="padding-top: 20px; width: 90%;">
+
+    <mat-form-field>
+        <mat-label>Поиск</mat-label>
+        <input matInput (keyup)="applyFilter($event)"  #input>
+      </mat-form-field>
+
+   <mat-table #table [dataSource]="dataSource" class="example-table">
+
+     <!-- Number Column -->
+     <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Дата</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.date }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef>Время</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.time }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="mileage">
+        <mat-header-cell *matHeaderCellDef>Пробег</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.mileage }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Статус</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.status }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="who_spend">
+        <mat-header-cell *matHeaderCellDef>Кто проводил</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.who_spend }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="link">
+        <mat-header-cell *matHeaderCellDef>Тип</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <a [routerLink]="['/service/',row.id]"> Открыть</a>
+        </mat-cell>
+      </ng-container>
+   
+    
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+
+   </mat-table>
+</div>

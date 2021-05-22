@@ -103,6 +103,7 @@
               > Ввод </button>
 
                 <button class="btn btn-danger col"  type="submit" (click)="delete(this.id)" routerLink="/workers">Удалить</button>
+                <button class="btn btn-info col"  type="submit" [routerLink]="['/calls/worker/',this.id]">Открыть вызовы</button>
         </div>
             
 

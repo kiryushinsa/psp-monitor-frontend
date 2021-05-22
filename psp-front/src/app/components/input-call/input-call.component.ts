@@ -17,6 +17,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { WorkerService } from 'src/app/services/workers/worker.service';
 import { Workers } from 'src/app/entity/workers';
 
+import {NgxPrintModule} from 'ngx-print';
 declare var ymaps:any;
 
 
@@ -34,26 +35,17 @@ export class InputCallComponent implements OnInit {
   calls: Calls = new Calls();
   work: Workers[];
   //! участок chips--------------------------------------------
-
- 
-
   visible = true;
   selectable = true;
   removable = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  WorkersCtrl = new FormControl();
-  filteredWorkers: Observable<string[]>;
   addOnBlur = false;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  workerCtrl = new FormControl();
+  filteredworkers: Observable<string[]>;
   workers: any = [];
+  allworkers: any = []
 
-
-  allworkers:any;
-
-
-  //allworkers: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-  @ViewChild('workerInput') workerInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
-
+  @ViewChild('workerInput') workerInput: ElementRef;
 
 
   //!-------------------------------- конец участка
@@ -62,101 +54,52 @@ export class InputCallComponent implements OnInit {
     private cookieService: CookieService,
     private workerService:WorkerService,) { 
 
-      this.workerService.getWorkersList().subscribe(
-        data=>{
-          this.allworkers = data;
-         
-        }
-      )
-      console.dir(this.allworkers);
-
-      this.filteredWorkers = this.WorkersCtrl.valueChanges.pipe(
+      this.filteredworkers = this.workerCtrl.valueChanges.pipe(
         startWith(null),
         map((worker: string | null) => worker ? this._filter(worker) : this.allworkers.slice()));
+
+  
       
     }
     // !участок кода с чипсом
+
     add(event: MatChipInputEvent): void {
       debugger
       const input = event.input;
       const value = event.value;
-     
+      // Add our worker
       if ((value || '').trim()) {
         this.workers.push({
           id:Math.random(),
-          last_name:value.trim(),
-          first_name: "string",
-          middle_name: "string",
-          level: "string",
-          addSpec: "string",
-          imageUrl: "string",
-          address: "string",
-          phone: "string",
-          add_phone: "string",
-          contacts: "string",
-          blood_type:"string",
-          
+          last_name:value.trim()
         });
       }
-
-
+  
+      // Reset the input value
       if (input) {
-      input.value = '';
-    }
-  
-      this.WorkersCtrl.setValue(null);
-    }
-  
-    /*
-    remove(worker: string): void {
-      const index = this.workers.indexOf(worker);
-  
-      if (index >= 0) {
-        this.workers.splice(index, 1);
+        input.value = '';
       }
-    }
-    */
+  
+      this.workerCtrl.setValue(null);
 
+      console.log(this.workers);
+    }
+  
     remove(worker, indx): void {
       this.workers.splice(indx, 1);
     }
   
     selected(event: MatAutocompleteSelectedEvent): void {
       this.workers.push(event.option.value);
-
       this.workerInput.nativeElement.value = '';
-
-      this.WorkersCtrl.setValue(null);
+      this.workerCtrl.setValue(null);
     }
   
     private _filter(value: any): any[] {
-      const filterValue = value.toLowerCase();
-  
-      return this.allworkers.filter(worker => worker.toLowerCase().indexOf(filterValue) === 0);
+      return this.allworkers.filter(worker => worker.last_name.toString().toLowerCase().includes(value.toLowerCase()));
     }
 
-    private getWork():Workers[]{
-      this.workerService.getWorkersList().subscribe(
-        data=>{
-          this.work = data;
-         
-        }
-      )
-    
-      //console.log(this.work.values)
-      return this.work;
-    }
-
-    workersList(){
-      this.workerService.getWorkersList().subscribe(
-        data=>{
-          this.work = data;
-        }
-      )
-     
-    }
-
-    //! конец участка кода с чипсом
+    //! конец участка кода с чипсом ----------------------------------------------------------------------------
 
   public map :any;
   public placemark :any;
@@ -200,14 +143,31 @@ export class InputCallComponent implements OnInit {
     this.setTimeDate();
     this.getCookies();
     this.createMap('55.671729', '37.479850'); //TODO: base position of the map fixed to position of squad
-    this.workersList();
-   //this.httpClient.post<Calls>('http://localhost:8080/add/calls',
-   // {info: 'test2',saved:2}).subscribe(data=>{ }) 
+    
+    
+    this._getElement(); //!ЧИПС
   }
+
+
+
+    // !участок кода с чипсом
+
+   
+    private _getElement():void{
+      this.workerService.getWorkersList().subscribe(
+        res=>{
+          this.allworkers=res;
+        }
+      )
+    }
+  
+      //! конец участка кода с чипсом ----
+
+
  
   onAddressSelected(event: DadataSuggestion){
     const addressData = event.data as DadataAddress;
-    
+    console.log(addressData);
     this.map.destroy(); //! удалить карту перед созданием. плавное передвижение не работает 
     this.createMap(addressData.geo_lat ,addressData.geo_lon);
   }

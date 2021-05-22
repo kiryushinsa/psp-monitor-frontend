@@ -56,6 +56,8 @@
         <div class="form-group"> 
             <button class="btn btn-primary" type="submit" (click)="update(technic)" >  Ввод </button>
             <button class="btn btn-danger col"  type="submit" (click)="delete(this.id)" routerLink="/technics">Удалить</button>
+            <button class="btn btn-info col"  type="submit" [routerLink]="['/service/technic/',this.id]">Открыть сервисы</button>
+            <button class="btn btn-success col"  type="submit" [routerLink]="['/technics/calls',this.id]">Открыть вызовы оборудования</button>
         </div>
     </div>
 

@@ -40,6 +40,15 @@ export class CallsService {
     );
   }
 
+
+  getCallsListById(id:number): Observable<Calls[]>{
+    const url = 'http://localhost:8080/api/workers/' + id + '/worker_calls';
+    return this.httpClient.get<GetResponse>(url,{'headers': this.getHeaders()}).pipe(
+      map(response => response._embedded.call)
+    );
+  }
+
+
   deleteCall(id: number) {
     const url = 'http://localhost:8080/add/calls/' + id
     return this.httpClient.delete(url,{'headers': this.getHeaders()}).

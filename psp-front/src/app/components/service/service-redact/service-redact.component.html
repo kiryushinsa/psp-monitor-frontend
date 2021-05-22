@@ -1,1 +1,49 @@
-<p>service-redact works!</p>
+<p>Оборудование / Редактировать сервис: {{this.id}} </p>
+<div class="content-area">
+    <form  #myForm="ngForm" #signupForm = "ngForm" 
+        [formGroup]="serviceForm">
+        
+        <div class="input-block">
+            <mat-form-field appearance="fill" class="textarea">
+                <mat-label>Введите описание обслуживания</mat-label>
+                <textarea matInput class="textarea"  [formControl]="description" >{{this.service.description}}</textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="input-block">
+            <div class="row">
+                    <div class="col">
+                        Время
+                        <input class="form-control" formControlName="time" type="time"   name="time" value="{{this.service.time}}"   required/> 
+                    </div>
+                    <div class="col">
+                        Дата
+                        <input class="form-control" formControlName="date"  type="date"   name="date" value="{{this.service.date}}" required /> 
+                    </div>
+                    <div class="col">
+                        Пробег на момент проведения работ 
+                        <input class="form-control" formControlName="mileage" 
+                            type="number" name="mileage" value="{{this.service.mileage}}" required/>
+                    </div>
+
+
+                </div>
+        </div>
+
+        <div class="input-block">
+            Кто проводил
+            <input class="form-control" formControlName="who_spend" type="text"   name="who_spend" value="{{this.service.who_spend}}" required /> 
+        </div>
+
+        <div class="input-block"> 
+        
+            <button class="btn btn-primary" type="submit" 
+            (click)="update(service)" 
+               > Сохранить </button>
+
+               <button class="btn btn-danger col"  type="submit" (click)="delete(this.id)" routerLink="/technics">Удалить</button>
+        </div>
+        
+
+    </form>
+</div>

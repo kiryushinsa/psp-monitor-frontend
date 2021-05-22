@@ -41,10 +41,20 @@ import { ServiceRedactComponent } from './components/service/service-redact/serv
 import { WorkersCallComponent } from './components/workers/workers-call/workers-call.component';
 import { TechnicCallsComponent } from './components/technic/technic-calls/technic-calls.component';
 import { TechnicServiceComponent } from './components/service/technic-service/technic-service.component';
+import { PrintFormComponent } from './components/print/print-form/print-form.component';
+
+
+import { NgxPrintModule } from 'ngx-print';
+
 const routes: Routes=[
   {path: 'call/:id', component: RedactCallComponent},
   {path: 'input', component: InputCallComponent},
   {path: 'calls', component: CallsListComponent},
+  {path: 'calls/worker/:id', component:  WorkersCallComponent},
+  
+  {path: 'print', component:  PrintFormComponent},
+  
+
   {path:'workers', component: WorkersListComponent},
   {path:'workers/:id', component:WorkersRedactComponent},
   {path:'workers-create', component: WorkersCreateComponent},
@@ -52,8 +62,10 @@ const routes: Routes=[
   {path:'technic-create',component:TechnicCreateComponent},
   {path:'technics',component:TechnicListComponent},
   {path:'technics/:id',component:TechnicRedactComponent},
+  {path:'technics/calls/:id',component:TechnicCallsComponent},
   {path:'service-create/:id',component:ServiceCreateComponent},
-  {path:'service-create',component:ServiceCreateComponent},
+  {path:'service/:id',component:ServiceRedactComponent},
+  {path:'service/technic/:id',component:TechnicServiceComponent},
   {path: '', redirectTo: '/calls',pathMatch: 'full'},
   {path: '**', redirectTo: '/calls',pathMatch: 'full'},
 ];
@@ -76,6 +88,7 @@ const routes: Routes=[
     WorkersCallComponent,
     TechnicCallsComponent,
     TechnicServiceComponent,
+    PrintFormComponent,
     
   ],
   imports: [
@@ -93,6 +106,7 @@ const routes: Routes=[
     MatInputModule,
     MatChipsModule,
     MatAutocompleteModule,MatExpansionModule,
+    NgxPrintModule ,
 
   ],
   providers: [CallsService],

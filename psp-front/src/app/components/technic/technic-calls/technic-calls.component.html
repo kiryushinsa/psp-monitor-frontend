@@ -1,1 +1,43 @@
-<p>technic-calls works!</p>
+<p>Оборудование / Использования: {{this.id}}</p>
+
+
+<div class="content" style="padding-top: 20px; width: 90%;">
+
+    <mat-form-field>
+        <mat-label>Поиск</mat-label>
+        <input matInput (keyup)="applyFilter($event)"  #input>
+      </mat-form-field>
+
+   <mat-table #table [dataSource]="dataSource" class="example-table">
+
+     <!-- Number Column -->
+     <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+  
+      <!-- Title Column -->
+      <ng-container matColumnDef="time_work">
+        <mat-header-cell *matHeaderCellDef>Время работы</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.time_work }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Описание работ</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.description }}</mat-cell>
+      </ng-container>
+     
+      <ng-container matColumnDef="link">
+        <mat-header-cell *matHeaderCellDef>Ссылка на вызов</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <a [routerLink]="['/call/',row.id]"> Открыть</a>
+        </mat-cell>
+      </ng-container>
+    
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+
+   </mat-table>
+</div>

@@ -1,1 +1,94 @@
-<p>workers-call works!</p>
+<p>Персонал/Вызовы работника: {{this.id}} </p>
+
+<div class="content" style="padding-top: 20px; width: 90%;">
+
+    <mat-form-field>
+        <mat-label>Поиск</mat-label>
+        <input matInput (keyup)="applyFilter($event)"  #input>
+      </mat-form-field>
+
+   <mat-table #table [dataSource]="dataSource" class="example-table">
+
+     <!-- Number Column -->
+     <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+  
+      <!-- Title Column -->
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Дата</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.date }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef>Время</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.time }}</mat-cell>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="died">
+        <mat-header-cell *matHeaderCellDef>Погибло</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.died }}</mat-cell>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="saved">
+        <mat-header-cell *matHeaderCellDef>Спасено</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.saved }}</mat-cell>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="affected">
+        <mat-header-cell *matHeaderCellDef>Пострадало</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.affected }}</mat-cell>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef>Тип</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.type }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="link">
+        <mat-header-cell *matHeaderCellDef>Тип</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <a [routerLink]="['/call/',row.id]"> Открыть</a>
+        </mat-cell>
+      </ng-container>
+     
+    
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+
+   </mat-table>
+</div>
+
+<!--
+
+     <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+       
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="info_local">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.info_local}} </td>
+        </ng-container>
+
+
+   
+  </table>
+
+-->
