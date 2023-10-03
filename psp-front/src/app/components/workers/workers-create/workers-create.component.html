@@ -35,6 +35,49 @@
         </div>
 
 
+        <div class="input-block">
+            <div class="row">
+                <div class="col">
+                    Фотография пользователя    
+                    <div class="image-preview " *ngIf="previewUrl">
+                        <img [src]="previewUrl" height="300" />                 
+                    </div>
+                    <div class="form-group">
+                        <input type="file"  name="image" (change)="fileProgress($event)" />
+                    </div>
+
+                    <!--   <div *ngIf="fileUploadProgress">
+                        Upload progress: {{ fileUploadProgress }}
+                    </div> -->
+                 
+
+                   
+         
+                    <!-- <div class="mb-3" *ngIf="uploadedFilePath">
+                        {{uploadedFilePath}}
+                    </div> -->
+                   
+                     
+                    <div class="form-group">
+                        <!-- ? <button class="btn btn-primary"  (click)="onSubmit()">Подтвердить</button>  -->
+                        
+                    </div>
+                </div>
+
+                <div class="col">
+                    Статус
+                    <mat-form-field appearance="fill">
+                        <mat-select [formControl]="stat" name="blood">
+                            <mat-option *ngFor="let status of statuses" [value]="status.value">
+                                {{status.name}}
+                            </mat-option>                   
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+
             <!-----Классность + кровь----->
 
             
@@ -50,6 +93,11 @@
                         </mat-option>
                     </mat-select>
                     </mat-form-field>
+                </div>
+
+                <div class="col pt-4">
+                    Дата окончания
+                    <input type="date">
                 </div>
 
                 <div class="col">
@@ -95,6 +143,30 @@
 
             </div>    
         </div>
+
+        <div class="input-block">
+            Дополнительные специальности
+            <div class="row">
+             
+              <div class="col">
+                <input class="form-control" formControlName="affected" 
+                      type="text"  placeholder="Название" name="affected"  required />        
+              </div>
+
+              <div class="col">
+                <input class="form-control" formControlName="affected" 
+                      type="text"  placeholder="Описание" name="affected"  required />        
+              </div>
+
+              <div class="col">
+                <input class="form-control" formControlName="affected" 
+                    type="date"  placeholder="Дата истечения" name="affected"  required />        
+              </div>
+              <div class="col pt-2">
+                  <a href="/input"> Добавить </a>
+              </div>
+            </div>
+          </div>
 
         <div class="input-block"> 
         

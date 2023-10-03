@@ -1,4 +1,4 @@
-<p>Вызовы / Новый вызов №</p>
+<p>Вызовы / Новый вызов № </p>
 <div class="row">
     <div class="col-md-auto">
         <div class="left-content-area">
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="input-block">
-                            Информация
+                            Описание работ
                             <input class="form-control" formControlName="info_local" type="text"   name="info_local"  required />    
                     </div>
 
@@ -115,6 +115,20 @@
                         </div>
                     </div>
 
+                    <div class="input-block">
+                      Тип ЧС: 
+                      <div class="row pt3">
+                        <mat-form-field appearance="fill">
+                        <mat-select [formControl]="types" name="level">
+                        
+                            <mat-option *ngFor="let type of call_types" [value]="type.value">
+                            {{type.name}}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
                           <!-- reserved for personal-->
                     <div class="input-block">
                      
@@ -135,11 +149,38 @@
                         </mat-form-field>
                         
                     </div>
+
+                    <!-- Ввод оборудования -->
+                  <div class="input-block">
+                    Использованное оборудование
+                    <div class="row">
+                     
+                      <div class="col">
+                        <input class="form-control" formControlName="affected" 
+                              type="text"  placeholder="Оборудование" name="affected"  required />        
+                      </div>
+                      <div class="col">
+                        <input class="form-control" formControlName="affected" 
+                            type="number"  placeholder="Время работы" name="affected"  required />        
+                      </div>
+                      <div class="col pt-2">
+                          <a href="/input"> Добавить </a>
+                      </div>
+                    </div>
+                  </div>
+
                         <!-- !end -->
+ 
                     
                     <div class="input-block">
-                        <button class="btn btn-primary" type="submit" (click)="save(calls)" [disabled]="!signupForm.form.valid">  Ввод </button>
-                        <button class="btn btn-info" printSectionId="pagetoprint" ngxPrint>Распечатать</button>
+                  
+                        <button class="btn btn-primary " type="submit" (click)="save(calls)" [disabled]="!signupForm.form.valid">  Ввод </button>
+                     
+ 
+                 
+  
+                        <button class="btn btn-info " printSectionId="pagetoprint" ngxPrint>Распечатать</button>
+                     
                     </div>
                     
                     
@@ -149,14 +190,31 @@
 
                     
                 </div>
-            </form>  
+                </form>  
+
+          
+                
         </div>
     </div>
 
     <div class="col">
         <div class="right-content-area">
     <!--- Yandex maps block -->
+            <div class="block-map">Вызов на карте</div>
             <div id="map" class="map"></div>
+
+             <div class="block-map" style=" margin-top: 40px;">Погода на местности</div>
+
+            <div class="block-weather">
+             
+                <div class="input-block-weather"> Температура: {{this.currentWeather.main?.temp}} ℃</div>
+                <div class="input-block-weather"> Чувствуется как: {{this.currentWeather.main?.feels_like}} ℃</div>
+                <div class="input-block-weather"> Давление: {{this.currentWeather.main?.pressure}} гПа</div>
+                <div class="input-block-weather"> Влажность: {{this.currentWeather.main?.humidity}} %</div>
+                <div class="input-block-weather"> Видимость: {{this.currentWeather.visibility}}</div>
+                <div class="input-block-weather"> Скорость ветра: {{this.currentWeather.wind?.speed}} м/c</div>
+                <div class="input-block-weather"> Порыв ветра: {{this.currentWeather.wind?.gust}} м/c</div>
+            </div>
         </div>
     </div>
 </div>

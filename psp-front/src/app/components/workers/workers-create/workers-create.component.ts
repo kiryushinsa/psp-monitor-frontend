@@ -15,6 +15,11 @@ interface Blood{
   name:string;
   value:string;
 }
+
+interface Status{
+  name:string;
+  value:string;
+}
  
 
 @Component({
@@ -29,6 +34,18 @@ export class WorkersCreateComponent implements OnInit {
 
  
   worker: Workers = new Workers();
+
+  // !-----          upload image test         ---------
+
+  fileData: File = null;
+  previewUrl:any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
+
+  // !-----     end     upload image test         ---------
+
+
+
   constructor(
     private httpClient: HttpClient,
     private workerService:WorkerService,
@@ -38,6 +55,36 @@ export class WorkersCreateComponent implements OnInit {
   ngOnInit(): void {
  
   }
+
+ // !-----          upload image test         ---------
+
+ fileProgress(fileInput: any) {
+  this.fileData = <File>fileInput.target.files[0];
+  this.preview();
+}
+
+preview() {
+// Show preview 
+var mimeType = this.fileData.type;
+if (mimeType.match(/image\/*/) == null) {
+  return;
+}
+
+var reader = new FileReader();      
+reader.readAsDataURL(this.fileData); 
+reader.onload = (_event) => { 
+  this.previewUrl = reader.result; 
+}
+}
+
+onSubmit() {
+  console.log("oNSUBMIT");
+}
+// !-----     end     upload image test         ---------
+
+
+
+
 
   blood_types: Blood[]= [
     {name:'I+', value:'I+'},
@@ -51,15 +98,22 @@ export class WorkersCreateComponent implements OnInit {
   ]
 
   levels: Level[]= [
-    {name:'Спасатель', value:'rescuer'},
-    {name:'Спасатель 3 класса', value:'rescuer_three'},
-    {name:'Спасатель 2 класса', value:'resuer_two'},
-    {name:'Спасатель 1 класса', value:'rescuer_one'},
-    {name:'Спасатель МК', value:'rescuer_mk'},
+    {name:'Спасатель', value:'Спасатель'},
+    {name:'Спасатель 3 класса', value:'Спасатель 3 класса'},
+    {name:'Спасатель 2 класса', value:'Спасатель 2 класса'},
+    {name:'Спасатель 1 класса', value:'Спасатель 1 класса'},
+    {name:'Спасатель МК', value:'Спасатель МК'},
     {name:'Без классности', value:'recruiter'},
   ]
 
- 
+  statuses: Status[]= [
+    {name:'В расчете', value:'В расчете'},
+    {name:'В отпуске', value:'В отпуске'},
+    {name:'Заболел', value:'Заболел'},
+
+  ]
+
+  stat = new FormControl(this.statuses[0].value);
   leveling = new FormControl(this.levels[0].value);
   bloodTypes = new FormControl(this.blood_types[0].value);
 

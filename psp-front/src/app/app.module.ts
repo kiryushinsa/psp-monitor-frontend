@@ -43,7 +43,7 @@ import { TechnicCallsComponent } from './components/technic/technic-calls/techni
 import { TechnicServiceComponent } from './components/service/technic-service/technic-service.component';
 import { PrintFormComponent } from './components/print/print-form/print-form.component';
 
-
+import {MatIconModule} from '@angular/material/icon';
 import { NgxPrintModule } from 'ngx-print';
 
 const routes: Routes=[
@@ -107,6 +107,7 @@ const routes: Routes=[
     MatChipsModule,
     MatAutocompleteModule,MatExpansionModule,
     NgxPrintModule ,
+    MatIconModule
 
   ],
   providers: [CallsService],

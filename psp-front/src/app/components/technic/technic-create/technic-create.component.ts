@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import {TechnicService} from 'src/app/services/technics/technic.service'
 import {Technic} from 'src/app/entity/technic'
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators,FormArray,FormBuilder} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -14,16 +14,23 @@ import { HttpClient } from '@angular/common/http';
 export class TechnicCreateComponent implements OnInit {
 
   technic: Technic = new Technic();
+  
+  
+  dataSet: any = <any>{};
 
+
+ 
   constructor(
     private httpClient: HttpClient,
     private technicService: TechnicService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private formBuilder: FormBuilder
   ) {
     
    }
 
   ngOnInit(): void {
+    
   }
 
   description = new FormControl();
@@ -36,8 +43,14 @@ export class TechnicCreateComponent implements OnInit {
     current_mileage: new FormControl(''),
     coef: new FormControl(''),
     description: new FormControl(''),
+
+  
    // characteristics: new FormControl(''),
   });
+
+
+
+  
 
   intializeTechnic(){
     this.technic.name= this.technicForm.get('name').value;
@@ -54,6 +67,16 @@ export class TechnicCreateComponent implements OnInit {
   save(technic){
     this.intializeTechnic();
     
-    this.technicService.createTechnic(technic);
+    this.technicService.createTechnic(technic).subscribe(data=>{
+      this.set(data);
+    });
+    
   }
+
+  set(data:any){
+    this.dataSet = data;
+    console.log(this.dataSet.id);
+  }
+
+ 
 }

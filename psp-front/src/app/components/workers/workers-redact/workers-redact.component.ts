@@ -30,12 +30,12 @@ export class WorkersRedactComponent implements OnInit {
   id:number;
 
   levels: Level[]= [
-    {name:'Спасатель', value:'rescuer'},
-    {name:'Спасатель 3 класса', value:'rescuer_three'},
-    {name:'Спасатель 2 класса', value:'resuer_two'},
-    {name:'Спасатель 1 класса', value:'rescuer_one'},
-    {name:'Спасатель МК', value:'rescuer_mk'},
-    {name:'Без классности', value:'recruiter'},
+    {name:'Спасатель', value:'Спасатель'},
+    {name:'Спасатель 3 класса', value:'Спасатель 3 класса'},
+    {name:'Спасатель 2 класса', value:'Спасатель 2 класса'},
+    {name:'Спасатель 1 класса', value:'Спасатель 1 класса'},
+    {name:'Спасатель МК', value:'Спасатель МК'},
+    {name:'Без классности', value:'Без классности'},
   ]
 
   blood_types: Blood[]= [

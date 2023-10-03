@@ -8,6 +8,7 @@ export class Technic {
     description: string;
     characteristic: string;
     img_url: string;
+    type: string;
     squad: string;
 
 }

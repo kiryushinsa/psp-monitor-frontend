@@ -8,18 +8,19 @@
                  
                       <div class="worker-item" [routerLink]="['/workers',this.worker.id ]" >
                         
-                            <img class="avatar-worker">   
+                            <img class="avatar-worker" src={{worker.image_url}}>   
 
                             <div class="fio">
                               {{worker.last_name}}
-                              
                               <br>
                               {{worker.first_name}}
                               {{worker.middle_name}}
                               <br>
-                              Спасатель
-                              
-                             
+                              {{worker.level}}
+                              <br>
+                              <br>
+                              <br>
+                              на вызове
                             </div>
                       </div>
                    

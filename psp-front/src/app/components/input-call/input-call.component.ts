@@ -3,23 +3,29 @@ import { Calls } from 'src/app/entity/calls';
 import { CallsService } from 'src/app/services/calls.service';
 import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NgForm, NgModel, FormGroup, FormControl, Validators, FormControlName} from '@angular/forms';
+import { NgForm, NgModel, FormGroup, FormControl, Validators, FormControlName,FormBuilder, FormArray} from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import {  DadataConfig, DadataType, DadataSuggestion, DadataAddress} from '@kolkov/ngx-dadata';
 import { formatDate } from '@angular/common';
 import { Time } from '@angular/common';
 //import { MapOperator } from 'rxjs/internal/operators/map';
-import {Observable} from 'rxjs';
+import {from, Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { WorkerService } from 'src/app/services/workers/worker.service';
 import { Workers } from 'src/app/entity/workers';
-
+import {WeatherService} from 'src/app/services/find/weather.service'
 import {NgxPrintModule} from 'ngx-print';
+
 declare var ymaps:any;
 
+
+interface Type{
+  name:string;
+  value:string;
+}
 
 @Component({
   selector: 'app-input-call',
@@ -34,6 +40,29 @@ export class InputCallComponent implements OnInit {
   
   calls: Calls = new Calls();
   work: Workers[];
+
+  public map :any;
+  public placemark :any;
+
+  currentWeather: any = <any>{};
+
+//? -------------------
+call_types: Type[]= [
+  {name:'Социальный', value:'Социальный'},
+  {name:'Техногенная', value:'Техногенная'},
+  {name:'Природное', value:'Природное'},
+  {name:'ДТП', value:'ДТП'},
+  {name:'Учебный', value:'Учебный'},
+  {name:'Поиски', value:'Поиски'},
+  {name:'Эпидемия', value:'Эпидемия'},
+  {name:'АХОВ', value:'АХОВ'},
+  {name:'Пожар', value:'Пожар'},
+  {name:'Взрыв', value:'Взрыв'},
+  {name:'Вскрытие двери', value:'Вскрытие двери'},
+]
+
+//? --------------------
+
   //! участок chips--------------------------------------------
   visible = true;
   selectable = true;
@@ -52,15 +81,30 @@ export class InputCallComponent implements OnInit {
   constructor(private httpClient: HttpClient,
     private callsService:CallsService,
     private cookieService: CookieService,
-    private workerService:WorkerService,) { 
+    private workerService:WorkerService,
+    private weatherService: WeatherService,
+    private fb:FormBuilder
+    ) { 
 
       this.filteredworkers = this.workerCtrl.valueChanges.pipe(
         startWith(null),
         map((worker: string | null) => worker ? this._filter(worker) : this.allworkers.slice()));
 
-  
+      
+        
       
     }
+
+//? ---------------------------
+
+
+
+
+//? -----------------------
+
+ 
+
+
     // !участок кода с чипсом
 
     add(event: MatChipInputEvent): void {
@@ -101,9 +145,7 @@ export class InputCallComponent implements OnInit {
 
     //! конец участка кода с чипсом ----------------------------------------------------------------------------
 
-  public map :any;
-  public placemark :any;
-
+ 
 
   configAddress: DadataConfig = {
     apiKey: '2e51c5fbc1a60bd48face95951108560bf03f7d9',
@@ -116,7 +158,7 @@ export class InputCallComponent implements OnInit {
   };
 
   
-
+  types = new FormControl(this.call_types[0].value);
   callForm = new FormGroup({
     time  : new FormControl(''),
     date: new FormControl(''),
@@ -133,19 +175,32 @@ export class InputCallComponent implements OnInit {
     imageUrl: new FormControl(''),
     died: new FormControl(''),
     saved: new FormControl(''),
-    affected: new FormControl('')
+    affected: new FormControl(''),
+    
+    "technic": new FormArray([
+      new FormControl("+7",Validators.required)
+    ])
 });
 
+addPhone(){
+  (<FormArray>this.callForm.controls["phones"]).push(new FormControl("+7", Validators.required));
+}
 
+getFormsControls() : FormArray{
+  return this.callForm.controls['phones'] as FormArray;
+}
 
   ngOnInit(): void {
    
     this.setTimeDate();
     this.getCookies();
     this.createMap('55.671729', '37.479850'); //TODO: base position of the map fixed to position of squad
+ 
+
     
     
     this._getElement(); //!ЧИПС
+  
   }
 
 
@@ -153,13 +208,13 @@ export class InputCallComponent implements OnInit {
     // !участок кода с чипсом
 
    
-    private _getElement():void{
-      this.workerService.getWorkersList().subscribe(
-        res=>{
-          this.allworkers=res;
-        }
-      )
-    }
+  private _getElement():void{
+    this.workerService.getWorkersList().subscribe(
+      res=>{
+        this.allworkers=res;
+      }
+    )
+  }
   
       //! конец участка кода с чипсом ----
 
@@ -170,6 +225,15 @@ export class InputCallComponent implements OnInit {
     console.log(addressData);
     this.map.destroy(); //! удалить карту перед созданием. плавное передвижение не работает 
     this.createMap(addressData.geo_lat ,addressData.geo_lon);
+
+       
+    this.weatherService.getWeatherByPosition(addressData.geo_lat, addressData.geo_lon).subscribe(
+      data=>{
+        this.currentWeather = data;
+      }
+      
+      );
+
   }
   
   deleteCookies(){
@@ -294,3 +358,12 @@ export class InputCallComponent implements OnInit {
 
   
 
+export class country {
+  id: string;
+  name: string;
+ 
+  constructor(id: string, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+}

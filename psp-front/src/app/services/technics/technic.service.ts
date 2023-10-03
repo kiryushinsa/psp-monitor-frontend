@@ -29,8 +29,8 @@ export class TechnicService {
   }
 
   createTechnic(technic: Technic){
-    return this.httpClient.post<Technic>('http://localhost:8080/api/technic',technic,{'headers': this.getHeaders()}).
-    subscribe(data=>{ }) 
+    return this.httpClient.post<Technic>('http://localhost:8080/api/technic',technic,{'headers': this.getHeaders()});
+    //    subscribe(data=>{console.log(data); }) 
   }
 
 

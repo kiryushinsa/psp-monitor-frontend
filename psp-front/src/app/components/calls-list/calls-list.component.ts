@@ -29,7 +29,7 @@ export class CallsListComponent implements OnInit {
   //columnsToDisplay = ['date','time','address'];
   expandedElement: Calls | null;
 
-  columnsToDisplay: string[] = ['date', 'time','address','type'];
+  columnsToDisplay: string[] = ['id','date', 'time','address','type'];
 
   constructor(private callsService: CallsService, 
     private cookieService: CookieService) {
@@ -58,12 +58,18 @@ export class CallsListComponent implements OnInit {
     this.callsService.deleteCall(calls.id);
     location.reload();
   }
+  
   update(calls: Calls){
     this.cookieService.set('redId', String(calls.id));
   }
 
 
   tableDef: Array<any> = [
+    {
+      key: 'id',
+      header: 'ID',
+      className: 'something'
+    },
     {
       key: 'date',
       header: 'Дата',
